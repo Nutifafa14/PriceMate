@@ -1,0 +1,190 @@
+{
+  "Cassava": {
+    "file": "cassava.jpg",
+    "title": "File:Cassava 097.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Cassava_097.jpg",
+    "license": "cc-by-sa-4.0",
+    "artist": "Amuzujoe"
+  },
+  "Eggplants": {
+    "file": "eggplants.jpg",
+    "title": "File:Garden Eggs 1.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Garden_Eggs_1.jpg",
+    "license": "cc-by-sa-4.0",
+    "artist": "Flixtey"
+  },
+  "Eggs": {
+    "file": "eggs.jpg",
+    "title": "File:6-Pack-Chicken-Eggs.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:6-Pack-Chicken-Eggs.jpg",
+    "license": "pd",
+    "artist": "Evan-Amos"
+  },
+  "Maize": {
+    "file": "maize.jpg",
+    "title": "File:Corn-raw-boiled-and-dry.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Corn-raw-boiled-and-dry.jpg",
+    "license": "cc-by-sa-3.0",
+    "artist": "Vassia Atanassova - Spiritia"
+  },
+  "Maize (yellow)": {
+    "file": "maize-yellow.jpg",
+    "title": "File:Ab food 06.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Ab_food_06.jpg",
+    "license": "cc-by-sa-3.0",
+    "artist": "Andrey Butko"
+  },
+  "Meat (chicken)": {
+    "file": "meat-chicken.jpg",
+    "title": "File:Raw chicken drumsticks (3312851753).jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Raw_chicken_drumsticks_(3312851753).jpg",
+    "license": "cc-by-2.0",
+    "artist": "Geoff Peters from Vancouver, BC, Canada"
+  },
+  "Meat (chicken, local)": {
+    "file": "meat-chicken-local.jpg",
+    "title": "File:Raw chicken drumsticks (3312851753).jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Raw_chicken_drumsticks_(3312851753).jpg",
+    "license": "cc-by-2.0",
+    "artist": "Geoff Peters from Vancouver, BC, Canada",
+    "reused_from": "Meat (chicken)"
+  },
+  "Cowpeas": {
+    "file": "cowpeas.jpg",
+    "title": "File:Black-eyed pea card 114.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Black-eyed_pea_card_114.jpg",
+    "license": "pd",
+    "artist": "user:alnokta"
+  },
+  "Cowpeas (white)": {
+    "file": "cowpeas-white.jpg",
+    "title": "File:Black-eyed pea card 114.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Black-eyed_pea_card_114.jpg",
+    "license": "pd",
+    "artist": "user:alnokta",
+    "reused_from": "Cowpeas"
+  },
+  "Fish (mackerel, fresh)": {
+    "file": "fish-mackerel-fresh.jpg",
+    "title": "File:Frozen fresh mackerel.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Frozen_fresh_mackerel.jpg",
+    "license": "cc0",
+    "artist": "Fumikas Sagisavas"
+  },
+  "Gari": {
+    "file": "gari.jpg",
+    "title": "File:A lady roasting grits into garri.png",
+    "source": "https://commons.wikimedia.org/wiki/File:A_lady_roasting_grits_into_garri.png",
+    "license": "cc-by-sa-4.0",
+    "artist": "Nkwafilms"
+  },
+  "Millet": {
+    "file": "millet.jpg",
+    "title": "File:Food grain finger millet.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Food_grain_finger_millet.jpg",
+    "license": "cc-by-sa-3.0",
+    "artist": "Sengai Podhuvan"
+  },
+  "Onions": {
+    "file": "onions.jpg",
+    "title": "File:Pile of Onions at Barkin Dogo Market, Kaduna North 01.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Pile_of_Onions_at_Barkin_Dogo_Market,_Kaduna_North_01.jpg",
+    "license": "cc-by-sa-4.0",
+    "artist": "Samsule2"
+  },
+  "Peppers (dried)": {
+    "file": "peppers-dried.jpg",
+    "title": "File:33 Chilli peppers background - Dried chilli peppers at a food market in Granada, Spain.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:33_Chilli_peppers_background_-_Dried_chilli_peppers_at_a_food_market_in_Granada,_Spain.jpg",
+    "license": "cc-by-3.0",
+    "artist": "Marek Ślusarczyk (Tupungato) Photo portfolio"
+  },
+  "Peppers (fresh)": {
+    "file": "peppers-fresh.jpg",
+    "title": "File:FRESH CHILLI PAPER.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:FRESH_CHILLI_PAPER.jpg",
+    "license": "cc0",
+    "artist": "Jamo Photography"
+  },
+  "Plantains (apem)": {
+    "file": "plantains-apem.jpg",
+    "title": "File:Banane Plantain.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Banane_Plantain.jpg",
+    "license": "cc-by-sa-4.0",
+    "artist": "Le Zeno"
+  },
+  "Plantains (apentu)": {
+    "file": "plantains-apentu.jpg",
+    "title": "File:Banane Plantain.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Banane_Plantain.jpg",
+    "license": "cc-by-sa-4.0",
+    "artist": "Le Zeno",
+    "reused_from": "Plantains (apem)"
+  },
+  "Rice (imported)": {
+    "file": "rice-imported.jpg",
+    "title": "File:Basmati Rice India, raw.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Basmati_Rice_India,_raw.jpg",
+    "license": "cc-by-2.0",
+    "artist": "cookbookman17"
+  },
+  "Rice (local)": {
+    "file": "rice-local.jpg",
+    "title": "File:Basmati Rice India, raw.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Basmati_Rice_India,_raw.jpg",
+    "license": "cc-by-2.0",
+    "artist": "cookbookman17",
+    "reused_from": "Rice (imported)"
+  },
+  "Rice (paddy)": {
+    "file": "rice-paddy.jpg",
+    "title": "File:Mushqbudji rice - paddy (unhulled rice).jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Mushqbudji_rice_-_paddy_(unhulled_rice).jpg",
+    "license": "cc0",
+    "artist": "Zahoor Ahmad Reshi"
+  },
+  "Sorghum": {
+    "file": "sorghum.jpg",
+    "title": "File:A plate of sorghum grain.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:A_plate_of_sorghum_grain.jpg",
+    "license": "cc-by-sa-4.0",
+    "artist": "Salil Kumar Mukherjee"
+  },
+  "Soybeans": {
+    "file": "soybeans.jpg",
+    "title": "File:Glycine max seeds.JPG",
+    "source": "https://commons.wikimedia.org/wiki/File:Glycine_max_seeds.JPG",
+    "license": "cc-by-sa-3.0",
+    "artist": "Ninjatacoshell"
+  },
+  "Tomatoes (local)": {
+    "file": "tomatoes-local.jpg",
+    "title": "File:A woman sorting tomatoes in a vegetable market in Uganda.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:A_woman_sorting_tomatoes_in_a_vegetable_market_in_Uganda.jpg",
+    "license": "cc-by-sa-4.0",
+    "artist": "SharonDawn"
+  },
+  "Tomatoes (navrongo)": {
+    "file": "tomatoes-navrongo.jpg",
+    "title": "File:A woman sorting tomatoes in a vegetable market in Uganda.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:A_woman_sorting_tomatoes_in_a_vegetable_market_in_Uganda.jpg",
+    "license": "cc-by-sa-4.0",
+    "artist": "SharonDawn",
+    "reused_from": "Tomatoes (local)"
+  },
+  "Yam": {
+    "file": "yam.jpg",
+    "title": "File:Dried Yam Tubers.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Dried_Yam_Tubers.jpg",
+    "license": "cc-by-sa-4.0",
+    "artist": "Bukky658"
+  },
+  "Yam (puna)": {
+    "file": "yam-puna.jpg",
+    "title": "File:Dried Yam Tubers.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Dried_Yam_Tubers.jpg",
+    "license": "cc-by-sa-4.0",
+    "artist": "Bukky658",
+    "reused_from": "Yam"
+  }
+}
