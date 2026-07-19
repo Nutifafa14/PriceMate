@@ -190,3 +190,4 @@ Following the phased build guide:
       [`DEPLOYMENT.md`](DEPLOYMENT.md) for taking all three services live.
       Known gaps (no CI, no app-level test suite, no crash reporting wired
       up) are documented in `DEPLOYMENT.md` §6, not silently left out.
+# Price_Mate
