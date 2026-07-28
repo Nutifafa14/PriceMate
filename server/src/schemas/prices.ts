@@ -17,6 +17,11 @@ export const latestPriceQuerySchema = z.object({
   marketId: uuidSchema.optional(),
 });
 
+export const anomalyQuerySchema = z.object({
+  commodityId: uuidSchema,
+  marketId: uuidSchema.optional(),
+});
+
 export type Price = {
   id: string;
   commodityId: string;

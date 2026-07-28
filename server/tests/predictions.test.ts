@@ -42,6 +42,65 @@ describe("POST /api/predictions", () => {
     expect(res.body.id).toEqual(expect.any(String));
   });
 
+  it("includes the full forecast pipeline output — range, confidence, why, freshness, disclaimer", async () => {
+    const res = await request(app)
+      .post("/api/predictions")
+      .send({ commodityId, marketId, month: 8, year: 2023 });
+
+    expect(res.status).toBe(201);
+    expect(res.body.lowEstimate).toBeLessThanOrEqual(res.body.centralEstimate);
+    expect(res.body.highEstimate).toBeGreaterThanOrEqual(res.body.centralEstimate);
+    expect(["moderate", "low", "very low"]).toContain(res.body.confidenceLabel);
+    expect(Array.isArray(res.body.signals)).toBe(true);
+    expect(res.body.signals.map((s: { name: string }) => s.name).sort()).toEqual(["fx", "globalBenchmark", "news"]);
+    expect(typeof res.body.extrapolationYears).toBe("number");
+
+    const newsSignal = res.body.signals.find((s: { name: string }) => s.name === "news");
+    expect(typeof newsSignal.available).toBe("boolean");
+    expect(typeof newsSignal.adjustmentPct).toBe("number");
+    expect(Math.abs(newsSignal.adjustmentPct)).toBeLessThanOrEqual(8);
+    expect(typeof newsSignal.detail).toBe("string");
+    expect(Array.isArray(res.body.why)).toBe(true);
+    expect(res.body.why.length).toBeGreaterThan(0);
+    expect(res.body.dataFreshness).toMatchObject({ modelTrainedThrough: expect.any(String) });
+    expect(res.body.disclaimer).toEqual(expect.any(String));
+  });
+
+  it("widens the range and never returns higher confidence for a far-future date than a near-term one", async () => {
+    const near = await request(app)
+      .post("/api/predictions")
+      .send({ commodityId, marketId, month: 8, year: 2023 });
+    const far = await request(app)
+      .post("/api/predictions")
+      .send({ commodityId, marketId, month: 8, year: 2031 });
+
+    expect(near.status).toBe(201);
+    expect(far.status).toBe(201);
+
+    const nearWidth = near.body.highEstimate - near.body.lowEstimate;
+    const farWidth = far.body.highEstimate - far.body.lowEstimate;
+    expect(far.body.extrapolationYears).toBeGreaterThan(near.body.extrapolationYears);
+    expect(farWidth).toBeGreaterThan(nearWidth);
+
+    const rank = { moderate: 2, low: 1, "very low": 0 };
+    expect(rank[far.body.confidenceLabel as keyof typeof rank]).toBeLessThanOrEqual(
+      rank[near.body.confidenceLabel as keyof typeof rank],
+    );
+  });
+
+  it("marks the global-benchmark signal not applicable for a commodity with no real benchmark", async () => {
+    const commodities = await request(app).get("/api/commodities");
+    const cassavaId = commodities.body.find((c: { name: string }) => c.name === "Cassava").id;
+
+    const res = await request(app)
+      .post("/api/predictions")
+      .send({ commodityId: cassavaId, marketId, month: 8, year: 2023 });
+
+    expect(res.status).toBe(201);
+    const benchmarkSignal = res.body.signals.find((s: { name: string }) => s.name === "globalBenchmark");
+    expect(benchmarkSignal.available).toBe(false);
+  });
+
   it("shows up in a subsequent GET filtered by commodityId", async () => {
     await request(app).post("/api/predictions").send({ commodityId, marketId, month: 9, year: 2023 });
     const res = await request(app).get("/api/predictions").query({ commodityId });

@@ -8,5 +8,7 @@ export { EmptyState } from "./EmptyState";
 export { ScreenHeader } from "./ScreenHeader";
 export { SegmentedControl } from "./SegmentedControl";
 export { PriceChart } from "./PriceChart";
+export { ForecastRangeGauge } from "./ForecastRangeGauge";
+export { YearMonthWheelPicker } from "./YearMonthWheelPicker";
 export { Skeleton, CommodityCardSkeleton, MarketRowSkeleton } from "./Skeleton";
 export { ViewToggle } from "./ViewToggle";

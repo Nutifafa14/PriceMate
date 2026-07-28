@@ -6,9 +6,11 @@ import { errorHandler, notFoundHandler } from "./middleware/error-handler";
 import { requestLogger } from "./middleware/request-logger";
 import { authRateLimiter } from "./middleware/rate-limit";
 import { authRouter } from "./routes/auth";
+import { basketsRouter } from "./routes/baskets";
 import { commoditiesRouter } from "./routes/commodities";
 import { communityPricesRouter } from "./routes/community-prices";
 import { marketsRouter } from "./routes/markets";
+import { modelRouter } from "./routes/model";
 import { newsRouter } from "./routes/news";
 import { pricesRouter } from "./routes/prices";
 import { predictionsRouter } from "./routes/predictions";
@@ -33,6 +35,8 @@ export function createApp(): Express {
   app.use("/api/community-prices", communityPricesRouter);
   app.use("/api/predictions", predictionsRouter);
   app.use("/api/news", newsRouter);
+  app.use("/api/model", modelRouter);
+  app.use("/api/baskets", basketsRouter);
 
   app.use(notFoundHandler);
   app.use(errorHandler);

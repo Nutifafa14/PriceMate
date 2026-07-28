@@ -2,7 +2,8 @@ import { Router } from "express";
 
 import { pool } from "../db/pool";
 import { asyncHandler } from "../lib/async-handler";
-import { latestPriceQuerySchema, priceQuerySchema } from "../schemas/prices";
+import { detectPriceAnomalies } from "../lib/price-anomalies";
+import { anomalyQuerySchema, latestPriceQuerySchema, priceQuerySchema } from "../schemas/prices";
 
 export const pricesRouter = Router();
 
@@ -104,5 +105,17 @@ pricesRouter.get(
     );
 
     res.json(rows);
+  }),
+);
+
+// Real z-score outlier detection over actual recorded prices (see
+// lib/price-anomalies.ts) — surfaces genuine historical price spikes/crashes
+// per market, not a model output.
+pricesRouter.get(
+  "/anomalies",
+  asyncHandler(async (req, res) => {
+    const { commodityId, marketId } = anomalyQuerySchema.parse(req.query);
+    const result = await detectPriceAnomalies(commodityId, marketId);
+    res.json(result);
   }),
 );

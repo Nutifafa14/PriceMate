@@ -23,4 +23,15 @@ describe("GET /api/news", () => {
       });
     }
   });
+
+  it("accepts a commodity-scoped query and returns the same resilient array contract", async () => {
+    const res = await request(app).get("/api/news").query({ commodity: "Maize" });
+    expect(res.status).toBe(200);
+    expect(Array.isArray(res.body)).toBe(true);
+  });
+
+  it("400s for an empty commodity value", async () => {
+    const res = await request(app).get("/api/news").query({ commodity: "" });
+    expect(res.status).toBe(400);
+  });
 });

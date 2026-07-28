@@ -1,7 +1,7 @@
 import { Ionicons } from "@expo/vector-icons";
 import { router, Stack, useLocalSearchParams } from "expo-router";
 import { useMemo, useState } from "react";
-import { ActivityIndicator, View } from "react-native";
+import { ActivityIndicator, Animated, Pressable, View } from "react-native";
 
 import { CommodityCard } from "@/components/CommodityCard";
 import { CommodityListItem } from "@/components/CommodityListItem";
@@ -16,8 +16,15 @@ import {
   ViewToggle,
 } from "@/components/ui";
 import { useCommodities, useCommunityPrices, useLatestPrices, useMarket } from "@/hooks";
+import { useFavoritesStore } from "@/store/favorites-store";
 import { useViewPreferenceStore } from "@/store/view-preference-store";
 import { useTheme } from "@/theme";
+import {
+  computeMarketPriceStats,
+  consistencyLabel,
+  PRICE_LEVEL_LABEL,
+  PRICE_LEVEL_TONE,
+} from "@/utils/market-stats";
 import { groupLatestCommunityByCommodity, groupLatestWholesaleByCommodity } from "@/utils/prices";
 import type { Commodity, CommunityPricePoint, PricePoint } from "@/types";
 
@@ -31,15 +38,32 @@ export default function MarketDetailScreen() {
   const viewMode = useViewPreferenceStore((state) => state.commodityViewMode);
   const setViewMode = useViewPreferenceStore((state) => state.setCommodityViewMode);
   const [tab, setTab] = useState<MarketTab>("wholesale");
+  const isFavorite = useFavoritesStore((state) => (id ? state.isFavoriteMarket(id) : false));
+  const toggleFavoriteMarket = useFavoritesStore((state) => state.toggleFavoriteMarket);
+  const [heartScale] = useState(() => new Animated.Value(1));
+
+  const handleToggleFavorite = () => {
+    if (!id) return;
+    toggleFavoriteMarket(id);
+    Animated.sequence([
+      Animated.spring(heartScale, { toValue: 1.3, useNativeDriver: true, speed: 50, bounciness: 12 }),
+      Animated.spring(heartScale, { toValue: 1, useNativeDriver: true, speed: 50, bounciness: 12 }),
+    ]).start();
+  };
 
   const marketQuery = useMarket(id);
   const pricesQuery = useLatestPrices({ marketId: id });
+  const allLatestPricesQuery = useLatestPrices(); // unfiltered — needed to compute the national average for priceStats
   const communityPricesQuery = useCommunityPrices({ marketId: id, limit: 500 });
   const commoditiesQuery = useCommodities();
 
   const commodityById = useMemo(
     () => new Map((commoditiesQuery.data ?? []).map((c) => [c.id, c])),
     [commoditiesQuery.data],
+  );
+  const priceStats = useMemo(
+    () => (id ? computeMarketPriceStats(allLatestPricesQuery.data ?? [], id) : undefined),
+    [allLatestPricesQuery.data, id],
   );
 
   const entries = useMemo(() => {
@@ -91,7 +115,25 @@ export default function MarketDetailScreen() {
   return (
     <Screen scroll>
       <Stack.Screen options={{ headerShown: false }} />
-      <ScreenHeader title={market.name} />
+      <ScreenHeader
+        title={market.name}
+        rightElement={
+          <Pressable
+            hitSlop={8}
+            onPress={handleToggleFavorite}
+            accessibilityRole="button"
+            accessibilityLabel={isFavorite ? "Remove from favourites" : "Add to favourites"}
+          >
+            <Animated.View style={{ transform: [{ scale: heartScale }] }}>
+              <Ionicons
+                name={isFavorite ? "heart" : "heart-outline"}
+                size={22}
+                color={isFavorite ? theme.colors.danger : theme.colors.text}
+              />
+            </Animated.View>
+          </Pressable>
+        }
+      />
       <View style={{ gap: theme.spacing.lg, paddingBottom: theme.spacing.xxl }}>
         <Card style={{ gap: theme.spacing.sm }}>
           <View style={{ flexDirection: "row", alignItems: "center", gap: theme.spacing.md }}>
@@ -121,6 +163,48 @@ export default function MarketDetailScreen() {
                 {market.latitude.toFixed(2)}, {market.longitude.toFixed(2)}
               </ThemedText>
             </View>
+          ) : null}
+        </Card>
+
+        <Card style={{ gap: theme.spacing.md }}>
+          <View style={{ flexDirection: "row", gap: theme.spacing.md }}>
+            <View style={{ flex: 1, gap: theme.spacing.xs }}>
+              <ThemedText variant="label" color="muted">
+                Active commodities
+              </ThemedText>
+              <ThemedText variant="subtitle" weight="bold">
+                {entries.length}
+              </ThemedText>
+            </View>
+            <View style={{ flex: 1, gap: theme.spacing.xs }}>
+              <ThemedText variant="label" color="muted">
+                Price level
+              </ThemedText>
+              {priceStats ? (
+                <Badge
+                  label={PRICE_LEVEL_LABEL[priceStats.level]}
+                  tone={PRICE_LEVEL_TONE[priceStats.level]}
+                />
+              ) : (
+                <ThemedText variant="body" color="muted">
+                  —
+                </ThemedText>
+              )}
+            </View>
+            <View style={{ flex: 1, gap: theme.spacing.xs }}>
+              <ThemedText variant="label" color="muted">
+                Price consistency
+              </ThemedText>
+              <ThemedText variant="body" weight="semibold">
+                {priceStats ? consistencyLabel(priceStats.consistency) : "—"}
+              </ThemedText>
+            </View>
+          </View>
+          {priceStats ? (
+            <ThemedText variant="label" color="muted">
+              Price level and consistency compare this market&apos;s Wholesale prices to the national average
+              for each commodity it trades — not a time-series trend.
+            </ThemedText>
           ) : null}
         </Card>
 

@@ -2,8 +2,9 @@ import { Router } from "express";
 
 import { pool } from "../db/pool";
 import { asyncHandler } from "../lib/async-handler";
+import { buildForecast } from "../lib/forecast-pipeline";
 import { notFound } from "../lib/http-error";
-import { predictPrice } from "../lib/ml-client";
+import { predictionsRateLimiter } from "../middleware/rate-limit";
 import { createPredictionSchema, predictionQuerySchema } from "../schemas/predictions";
 
 export const predictionsRouter = Router();
@@ -48,16 +49,22 @@ predictionsRouter.get(
   }),
 );
 
-// Calls the Phase 4 ML API (ml/src/api.py) for a live prediction, persists
-// it, and returns the stored row — the Prediction screen's "Predict future
-// price" button hits this.
+// Runs the full forecast pipeline (Phase 4 ML baseline + FX/global-benchmark
+// signal adjustment + real backtest-derived range, see
+// lib/forecast-pipeline.ts), persists the baseline point estimate (unchanged
+// row shape, so history/trend consumers of GET below are unaffected) plus a
+// full audit-log row in forecast_runs, and returns the enriched forecast —
+// the Prediction screen's "Predict future price" button hits this.
 predictionsRouter.post(
   "/",
+  predictionsRateLimiter,
   asyncHandler(async (req, res) => {
     const { commodityId, marketId, month, year } = createPredictionSchema.parse(req.body);
 
     const [commodityResult, marketResult] = await Promise.all([
-      pool.query<{ name: string }>("SELECT name FROM commodities WHERE id = $1", [commodityId]),
+      pool.query<{ name: string; category: string }>("SELECT name, category FROM commodities WHERE id = $1", [
+        commodityId,
+      ]),
       pool.query<{ name: string }>("SELECT name FROM markets WHERE id = $1", [marketId]),
     ]);
     const commodity = commodityResult.rows[0];
@@ -65,12 +72,7 @@ predictionsRouter.post(
     if (!commodity) throw notFound("Commodity");
     if (!market) throw notFound("Market");
 
-    const { predictedPrice, modelName } = await predictPrice({
-      commodity: commodity.name,
-      market: market.name,
-      month,
-      year,
-    });
+    const forecast = await buildForecast(commodityId, commodity.name, market.name, commodity.category, month, year);
 
     const predictionDate = `${year}-${String(month).padStart(2, "0")}-15`;
 
@@ -87,9 +89,51 @@ predictionsRouter.post(
         model_name AS "modelName",
         created_at AS "createdAt"
       `,
-      [commodityId, marketId, predictionDate, predictedPrice, modelName],
+      [commodityId, marketId, predictionDate, forecast.baselinePrice, forecast.baselineModelName],
+    );
+    const prediction = rows[0];
+
+    await pool.query(
+      `
+      INSERT INTO forecast_runs (
+        prediction_id, commodity_id, market_id, forecast_date,
+        baseline_price, central_estimate, low_estimate, high_estimate,
+        confidence_label, category_mape, signals
+      )
+      VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11)
+      `,
+      [
+        prediction.id,
+        commodityId,
+        marketId,
+        predictionDate,
+        forecast.baselinePrice,
+        forecast.centralEstimate,
+        forecast.lowEstimate,
+        forecast.highEstimate,
+        forecast.confidenceLabel,
+        forecast.categoryMape ?? null,
+        JSON.stringify({
+          signals: forecast.signals,
+          why: forecast.why,
+          dataFreshness: forecast.dataFreshness,
+          extrapolationYears: forecast.extrapolationYears,
+        }),
+      ],
     );
 
-    res.status(201).json(rows[0]);
+    res.status(201).json({
+      ...prediction,
+      centralEstimate: forecast.centralEstimate,
+      lowEstimate: forecast.lowEstimate,
+      highEstimate: forecast.highEstimate,
+      confidenceLabel: forecast.confidenceLabel,
+      categoryMape: forecast.categoryMape ?? null,
+      extrapolationYears: forecast.extrapolationYears,
+      signals: forecast.signals,
+      why: forecast.why,
+      dataFreshness: forecast.dataFreshness,
+      disclaimer: forecast.disclaimer,
+    });
   }),
 );

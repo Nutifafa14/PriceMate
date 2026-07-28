@@ -26,6 +26,7 @@ from data import FEATURE_COLUMNS
 MODELS_DIR = Path(__file__).resolve().parent.parent / "models"
 MODEL_PATH = MODELS_DIR / "price_model.joblib"
 METADATA_PATH = MODELS_DIR / "metadata.json"
+BACKTEST_PATH = MODELS_DIR / "backtest.json"
 
 logger = logging.getLogger("pricemate.ml")
 
@@ -41,18 +42,20 @@ async def unhandled_exception_handler(request: Request, exc: Exception) -> JSONR
     return JSONResponse(status_code=500, content={"detail": "Internal server error"})
 
 
-def _load_artifacts() -> tuple[Any, dict[str, Any]]:
+def _load_artifacts() -> tuple[Any, dict[str, Any], list[dict[str, Any]]]:
     if not MODEL_PATH.exists() or not METADATA_PATH.exists():
         raise RuntimeError(f"Model artifacts not found at {MODELS_DIR}. Run `python train.py` first.")
     model = joblib.load(MODEL_PATH)
     metadata = json.loads(METADATA_PATH.read_text())
-    return model, metadata
+    backtest = json.loads(BACKTEST_PATH.read_text()) if BACKTEST_PATH.exists() else []
+    return model, metadata, backtest
 
 
 # Loaded once at process start (module import), not per-request or via a
 # startup event — simpler, and just as effective since a FastAPI/uvicorn
-# process only imports this module once.
-_model, _metadata = _load_artifacts()
+# process only imports this module once. Re-loadable via POST /reload
+# without restarting the process — see that endpoint below for why.
+_model, _metadata, _backtest = _load_artifacts()
 
 
 class PredictRequest(BaseModel):
@@ -81,6 +84,31 @@ def health() -> dict[str, str]:
 @app.get("/metadata")
 def metadata() -> dict[str, Any]:
     return _metadata
+
+
+@app.get("/backtest")
+def backtest() -> list[dict[str, Any]]:
+    """A real sample of the chronological-split test set's predicted vs. actual prices — never-trained-on data, not simulated. See train.py's `backtest_sample`."""
+    return _backtest
+
+
+@app.post("/reload")
+def reload_artifacts() -> dict[str, str]:
+    """
+    Hot-reloads the model/metadata/backtest files from disk without
+    restarting the process — the second half of this app's retraining
+    workflow: run `python train.py` to produce fresh artifacts, then call
+    this so the already-running API picks them up immediately. Never
+    retrains itself (that stays an explicit, reviewable step, not an
+    automatic background job against production traffic).
+    """
+    global _model, _metadata, _backtest
+    try:
+        _model, _metadata, _backtest = _load_artifacts()
+    except RuntimeError as exc:
+        raise HTTPException(status_code=409, detail=str(exc)) from exc
+    logger.info("Reloaded model artifacts: %s (trained_at=%s)", _metadata.get("model_name"), _metadata.get("trained_at"))
+    return {"status": "reloaded", "modelName": _metadata["model_name"], "trainedAt": _metadata.get("trained_at", "unknown")}
 
 
 @app.post("/predict", response_model=PredictResponse)

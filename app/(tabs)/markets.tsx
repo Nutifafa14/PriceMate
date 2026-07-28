@@ -32,8 +32,8 @@ export default function MarketsScreen() {
   }, [markets, query, activeRegion]);
 
   return (
-    <Screen edges={["top"]}>
-      <View style={{ paddingTop: theme.spacing.md, gap: theme.spacing.md, flex: 1 }}>
+    <Screen scroll edges={["top"]}>
+      <View style={{ paddingTop: theme.spacing.md, gap: theme.spacing.md, paddingBottom: theme.spacing.xxl }}>
         <ThemedText variant="title">Markets</ThemedText>
         <TextField
           placeholder="Search markets or regions"
@@ -95,19 +95,15 @@ export default function MarketsScreen() {
               {results.length} market{results.length === 1 ? "" : "s"}
             </ThemedText>
 
-            <FlatList
-              data={results}
-              keyExtractor={(item) => item.id}
-              style={{ flex: 1 }}
-              contentContainerStyle={{ gap: theme.spacing.sm, paddingBottom: theme.spacing.xxl }}
-              showsVerticalScrollIndicator={false}
-              ListEmptyComponent={
-                <EmptyState icon="storefront-outline" title="No markets match your search" />
-              }
-              renderItem={({ item }) => (
-                <MarketRow market={item} onPress={() => router.push(`/market/${item.id}`)} />
-              )}
-            />
+            {results.length === 0 ? (
+              <EmptyState icon="storefront-outline" title="No markets match your search" />
+            ) : (
+              <View style={{ gap: theme.spacing.sm }}>
+                {results.map((item) => (
+                  <MarketRow key={item.id} market={item} onPress={() => router.push(`/market/${item.id}`)} />
+                ))}
+              </View>
+            )}
           </>
         )}
       </View>

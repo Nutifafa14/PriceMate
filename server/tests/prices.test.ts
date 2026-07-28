@@ -100,3 +100,23 @@ describe("GET /api/prices/latest", () => {
     }
   });
 });
+
+describe("GET /api/prices/anomalies", () => {
+  it("returns real z-score outliers for a commodity with historical data", async () => {
+    const commodities = await request(app).get("/api/commodities");
+    const maizeId = commodities.body.find((c: { name: string }) => c.name === "Maize").id;
+
+    const res = await request(app).get("/api/prices/anomalies").query({ commodityId: maizeId });
+    expect(res.status).toBe(200);
+    expect(Array.isArray(res.body.anomalies)).toBe(true);
+    expect(res.body.seriesScanned).toBeGreaterThan(0);
+    for (const anomaly of res.body.anomalies) {
+      expect(Math.abs(anomaly.zScore)).toBeGreaterThanOrEqual(2.5);
+    }
+  });
+
+  it("400s without a commodityId", async () => {
+    const res = await request(app).get("/api/prices/anomalies");
+    expect(res.status).toBe(400);
+  });
+});

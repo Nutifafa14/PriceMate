@@ -4,3 +4,4 @@ __pycache__
 .pytest_cache
 models/*.joblib
 models/metadata.json
+models/backtest.json

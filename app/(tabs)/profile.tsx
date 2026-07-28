@@ -12,7 +12,7 @@ export default function ProfileScreen() {
   const theme = useTheme();
   const user = useAuthStore((state) => state.user);
   const signOut = useAuthStore((state) => state.signOut);
-  const favoriteCount = useFavoritesStore((state) => state.commodityIds.length);
+  const favoriteCount = useFavoritesStore((state) => state.commodityIds.length + state.marketIds.length);
 
   const onSignOut = async () => {
     await clearToken();

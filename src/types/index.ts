@@ -82,6 +82,43 @@ export type PredictionPoint = {
   createdAt: string; // ISO datetime
 };
 
+/** One disclosed adjustment signal behind a forecast's range — see server/src/lib/forecast-pipeline.ts. */
+export type ForecastSignal = {
+  name: "fx" | "globalBenchmark" | "news";
+  available: boolean;
+  adjustmentPct: number;
+  passthroughCoefficient: number;
+  detail: string;
+  fetchedAt?: string;
+};
+
+/**
+ * The full forecast pipeline response — everything POST /api/predictions
+ * now returns alongside the persisted PredictionPoint fields above: a
+ * range (never a bare point value), a confidence label derived from this
+ * app's own real chronological backtest (widened + capped the further the
+ * target date sits past the model's training window), and a disclosed list
+ * of what was factored in.
+ */
+export type ForecastResult = PredictionPoint & {
+  centralEstimate: number;
+  lowEstimate: number;
+  highEstimate: number;
+  confidenceLabel: "moderate" | "low" | "very low";
+  categoryMape: number | null;
+  /** Years the forecast target sits past the model's training cutoff (2023-07) — 0 for dates within/near it. */
+  extrapolationYears: number;
+  signals: ForecastSignal[];
+  why: string[];
+  dataFreshness: {
+    modelTrainedThrough: string;
+    fxAsOf?: string;
+    benchmarkAsOf?: string;
+    newsAsOf?: string;
+  };
+  disclaimer: string;
+};
+
 /** A real, server-cached article from GNews (Ghana food/agriculture news) — see server/src/lib/news-client.ts. */
 export type NewsArticle = {
   title: string;
@@ -90,6 +127,61 @@ export type NewsArticle = {
   image: string | null;
   publishedAt: string; // ISO datetime
   sourceName: string;
+};
+
+/** One market's real, most-recent price for a basket item — see server/src/lib/basket-optimizer.ts for the unit-normalization rules. */
+export type BasketMarketOption = {
+  marketId: string;
+  marketName: string;
+  pricePerUnit: number;
+  rawPrice: number;
+  rawUnit: string;
+  date: string; // ISO date — the actual price record's own date, so the UI can disclose how current it is.
+};
+
+export type BasketItemPricing = {
+  commodityId: string;
+  commodityName: string;
+  quantity: number;
+  unitLabel: string;
+  options: BasketMarketOption[];
+  excludedMarkets: { marketId: string; marketName: string; reason: string }[];
+};
+
+export type BasketMarketPlan = {
+  marketIds: string[];
+  marketNames: string[];
+  itemTotal: number;
+  transportCost: number;
+  netCost: number;
+  perItem: { commodityId: string; commodityName: string; marketId: string; marketName: string; lineCost: number }[];
+};
+
+export type BasketOptimizationResult = {
+  items: BasketItemPricing[];
+  unpriceableItems: { commodityId: string; commodityName: string }[];
+  cheapestPerItem?: BasketMarketPlan;
+  cheapestSingleMarket?: BasketMarketPlan;
+  bestCombination?: BasketMarketPlan;
+  recommendation: {
+    plan: "singleMarket" | "combination" | "perItem" | "none";
+    reasoning: string;
+  };
+  transportCostPerExtraMarket: number;
+};
+
+export type BasketItemInput = { commodityId: string; quantity: number };
+
+export type SavedBasketSummary = {
+  id: string;
+  name: string;
+  itemCount: number;
+  createdAt: string;
+  updatedAt: string;
+};
+
+export type SavedBasketDetail = SavedBasketSummary & {
+  items: { commodityId: string; commodityName: string; quantity: number }[];
 };
 
 export type User = {

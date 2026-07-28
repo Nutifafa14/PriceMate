@@ -19,16 +19,20 @@ export default function SettingsScreen() {
   const theme = useTheme();
   const themeOverride = useSettingsStore((state) => state.themeOverride);
   const setThemeOverride = useSettingsStore((state) => state.setThemeOverride);
-  const favoriteCount = useFavoritesStore((state) => state.commodityIds.length);
+  const favoriteCount = useFavoritesStore((state) => state.commodityIds.length + state.marketIds.length);
   const clearFavorites = useFavoritesStore((state) => state.clearAll);
   const signOut = useAuthStore((state) => state.signOut);
 
   const onClearFavorites = () => {
     if (favoriteCount === 0) return;
-    Alert.alert("Clear favourites?", `This removes all ${favoriteCount} favourited commodities.`, [
-      { text: "Cancel", style: "cancel" },
-      { text: "Clear", style: "destructive", onPress: clearFavorites },
-    ]);
+    Alert.alert(
+      "Clear favourites?",
+      `This removes all ${favoriteCount} favourited commodities and markets.`,
+      [
+        { text: "Cancel", style: "cancel" },
+        { text: "Clear", style: "destructive", onPress: clearFavorites },
+      ],
+    );
   };
 
   const onSignOut = async () => {

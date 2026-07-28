@@ -20,6 +20,7 @@ from sklearn.metrics import mean_absolute_error, mean_absolute_percentage_error,
 from sklearn.pipeline import Pipeline
 
 from data import (
+    CATEGORICAL_COLUMNS,
     CSV_PATH,
     FEATURE_COLUMNS,
     TARGET_COLUMN,
@@ -32,6 +33,8 @@ from data import (
 MODELS_DIR = Path(__file__).resolve().parent.parent / "models"
 MODEL_PATH = MODELS_DIR / "price_model.joblib"
 METADATA_PATH = MODELS_DIR / "metadata.json"
+BACKTEST_PATH = MODELS_DIR / "backtest.json"
+MAX_BACKTEST_ROWS = 1000
 
 TEST_FRACTION = 0.2
 RANDOM_STATE = 42
@@ -64,6 +67,39 @@ def evaluate(y_true, y_pred) -> dict[str, float]:
         "r2": float(r2_score(y_true, y_pred)),
         "mape": float(mean_absolute_percentage_error(y_true, y_pred)),
     }
+
+
+def compute_feature_importance(pipeline: Pipeline) -> dict[str, float] | None:
+    """
+    Groups the fitted model's real importances back to the original
+    features (commodity/market's one-hot columns summed into one figure
+    each, so the result is interpretable rather than one entry per category
+    value). Returns None for a model type with neither `feature_importances_`
+    nor `coef_` (neither candidate here lacks both, but this keeps the
+    function honest about what it can and can't report rather than
+    fabricating a number).
+    """
+    model = pipeline.named_steps["model"]
+    preprocessor = pipeline.named_steps["preprocess"]
+    transformed_names = preprocessor.get_feature_names_out()
+
+    if hasattr(model, "feature_importances_"):
+        raw = model.feature_importances_
+    elif hasattr(model, "coef_"):
+        raw = abs(model.coef_)
+    else:
+        return None
+
+    grouped: dict[str, float] = {col: 0.0 for col in FEATURE_COLUMNS}
+    for name, value in zip(transformed_names, raw):
+        # transformed names look like "categorical__commodity_Maize" or "numeric__year"
+        original = name.split("__", 1)[1]
+        matched = next((col for col in CATEGORICAL_COLUMNS if original.startswith(f"{col}_")), None)
+        key = matched or original
+        grouped[key] = grouped.get(key, 0.0) + float(value)
+
+    total = sum(grouped.values()) or 1.0
+    return {k: round(v / total, 4) for k, v in sorted(grouped.items(), key=lambda kv: -kv[1])}
 
 
 def naive_baseline_predictions(train_df: pd.DataFrame, test_df: pd.DataFrame) -> pd.Series:
@@ -123,6 +159,12 @@ def main() -> None:
             f"MAPE={category_breakdown[category]['mape']:.1%}"
         )
 
+    feature_importance = compute_feature_importance(best_pipeline)
+    if feature_importance:
+        print("\nFeature importance:")
+        for name, value in feature_importance.items():
+            print(f"  {name:12s} {value:.1%}")
+
     MODELS_DIR.mkdir(parents=True, exist_ok=True)
     joblib.dump(best_pipeline, MODEL_PATH)
 
@@ -136,11 +178,33 @@ def main() -> None:
         "date_range": [df["date"].min().strftime("%Y-%m-%d"), df["date"].max().strftime("%Y-%m-%d")],
         "metrics": results,
         "category_breakdown": category_breakdown,
+        "feature_importance": feature_importance,
+        "trained_at": pd.Timestamp.now("UTC").isoformat(),
         **known_categories(df),
     }
     METADATA_PATH.write_text(json.dumps(metadata, indent=2))
     print(f"Saved model to {MODEL_PATH}")
     print(f"Saved metadata to {METADATA_PATH}")
+
+    # A real predicted-vs-actual sample from the held-out chronological test
+    # set (never trained on) — capped and shuffled-then-sorted so the saved
+    # sample is spread across commodities/markets rather than just the tail
+    # of the dataframe, while staying small enough to ship as a JSON file.
+    backtest_sample = test_with_preds.sample(
+        n=min(MAX_BACKTEST_ROWS, len(test_with_preds)), random_state=RANDOM_STATE
+    ).sort_values(["commodity", "market", "date"])
+    backtest_records = [
+        {
+            "commodity": row["commodity"],
+            "market": row["market"],
+            "date": row["date"].strftime("%Y-%m-%d"),
+            "actual": round(float(row[TARGET_COLUMN]), 2),
+            "predicted": round(float(row["_pred"]), 2),
+        }
+        for _, row in backtest_sample.iterrows()
+    ]
+    BACKTEST_PATH.write_text(json.dumps(backtest_records))
+    print(f"Saved {len(backtest_records)} predicted-vs-actual backtest rows to {BACKTEST_PATH}")
 
 
 if __name__ == "__main__":
