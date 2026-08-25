@@ -16,7 +16,10 @@ import pandas as pd
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.preprocessing import OneHotEncoder
 
-from src.data import load_wholesale_prices
+try:
+    from src.data import load_wholesale_prices
+except ModuleNotFoundError:  # pragma: no cover - script execution path
+    from data import load_wholesale_prices
 
 
 MODELS_DIR = Path(__file__).resolve().parent.parent / "models"
