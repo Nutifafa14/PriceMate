@@ -4,6 +4,8 @@ import { HttpError } from "./http-error";
 export type MlPredictInput = {
   commodity: string;
   market: string;
+  unit_type: string;
+  quantity: number;
   month: number;
   year: number;
 };

@@ -1,7 +1,6 @@
 """
 Shared data loading and feature engineering for the wholesale price model.
-Used by both train.py (training/evaluation) and api.py (live inference), so
-the exact same transformations are applied in both places.
+Used by train.py, future_forecast.py and api.py.
 """
 
 from pathlib import Path
@@ -11,59 +10,120 @@ import pandas as pd
 from sklearn.compose import ColumnTransformer
 from sklearn.preprocessing import OneHotEncoder
 
+
 DATA_DIR = Path(__file__).resolve().parent.parent.parent / "data"
 CSV_PATH = DATA_DIR / "ghana_food_prices_clean.csv"
 
-CATEGORICAL_COLUMNS = ["commodity", "market"]
-NUMERIC_COLUMNS = ["year", "month_sin", "month_cos"]
+CATEGORICAL_COLUMNS = [
+    "commodity",
+    "market",
+    "unit_type",
+]
+
+NUMERIC_COLUMNS = [
+    "quantity",
+    "year",
+    "month_sin",
+    "month_cos",
+    "years_since_start",
+]
+
 FEATURE_COLUMNS = CATEGORICAL_COLUMNS + NUMERIC_COLUMNS
 TARGET_COLUMN = "price"
 
 
-def load_wholesale_prices(csv_path: Path = CSV_PATH) -> pd.DataFrame:
+def load_wholesale_prices(
+    csv_path: Path = CSV_PATH,
+) -> pd.DataFrame:
     """
-    Loads data/ghana_food_prices_clean.csv and filters to Wholesale rows —
-    the build prompt asks specifically for wholesale price prediction, and
-    one commodity (Cowpeas) has no Wholesale rows at all in the cleaned
-    dataset, so it is excluded from training as a direct consequence (see
-    ml/reports/MODEL_EVALUATION.md).
+    Loads the cleaned dataset and keeps Wholesale observations.
+
+    The source CSV already provides unit_quantity (numeric) and
+    unit_measure (e.g. "KG", "Tubers") as separate columns, so no
+    string parsing of a combined "unit" field is needed here --
+    we just rename them into the feature names used throughout
+    the rest of the pipeline (quantity / unit_type).
     """
     df = pd.read_csv(csv_path)
+
     df = df[df["price_type"] == "Wholesale"].copy()
+
     df["date"] = pd.to_datetime(df["date"])
+
+    df["quantity"] = pd.to_numeric(
+        df["unit_quantity"], errors="coerce"
+    )
+
+    df["unit_type"] = (
+        df["unit_measure"]
+        .astype(str)
+        .str.strip()
+        .str.upper()
+    )
+
+    df["price"] = pd.to_numeric(df["price"], errors="coerce")
+
+    df = df.dropna(subset=["price", "quantity"])
+    df = df[df["price"] > 0]
+    df = df[df["quantity"] > 0]
+
     return df
 
 
 def engineer_features(df: pd.DataFrame) -> pd.DataFrame:
-    """
-    Adds cyclical month encoding (sin/cos) so December and January are
-    numerically adjacent instead of 11 apart, which a raw 1-12 integer would
-    imply to a model that has no other notion of cyclicality.
-    """
     df = df.copy()
-    df["month_sin"] = np.sin(2 * np.pi * df["month"] / 12)
-    df["month_cos"] = np.cos(2 * np.pi * df["month"] / 12)
+
+    df["month"] = df["date"].dt.month
+
+    df["month_sin"] = np.sin(
+        2 * np.pi * df["month"] / 12
+    )
+
+    df["month_cos"] = np.cos(
+        2 * np.pi * df["month"] / 12
+    )
+
+    start_year = df["date"].dt.year.min()
+
+    df["years_since_start"] = (
+        df["date"].dt.year - start_year
+    )
+
     return df
 
 
 def build_preprocessor() -> ColumnTransformer:
     """
-    One-hot encodes commodity/market (handle_unknown="ignore" so a market or
-    commodity absent from a given training fold doesn't crash inference —
-    it just contributes no categorical signal for that row) and passes
-    numeric features through unchanged.
+    Encodes commodity, market and unit type while passing quantity
+    and time features through unchanged.
     """
     return ColumnTransformer(
         transformers=[
-            ("categorical", OneHotEncoder(handle_unknown="ignore"), CATEGORICAL_COLUMNS),
-            ("numeric", "passthrough", NUMERIC_COLUMNS),
+            (
+                "categorical",
+                OneHotEncoder(handle_unknown="ignore"),
+                CATEGORICAL_COLUMNS,
+            ),
+            (
+                "numeric",
+                "passthrough",
+                NUMERIC_COLUMNS,
+            ),
         ]
     )
 
 
-def known_categories(df: pd.DataFrame) -> dict[str, list[str]]:
-    """Sorted list of commodities/markets actually present in the training data — used by the API to validate inputs and by /metadata."""
+def known_categories(
+    df: pd.DataFrame,
+) -> dict[str, list[str]]:
     return {
-        "commodities": sorted(df["commodity"].unique().tolist()),
-        "markets": sorted(df["market"].unique().tolist()),
+        "commodities": sorted(
+            df["commodity"].unique().tolist()
+        ),
+        "markets": sorted(
+            df["market"].unique().tolist()
+        ),
+        "unit_types": sorted(
+            df["unit_type"].unique().tolist()
+        ),
     }

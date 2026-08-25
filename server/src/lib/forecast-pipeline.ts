@@ -205,7 +205,7 @@ export async function buildForecast(
   year: number,
 ): Promise<ForecastResult> {
   const [baseline, fx, benchmark, mlMetadata, news, seasonal] = await Promise.all([
-    predictPrice({ commodity: commodityName, market: marketName, month, year }),
+    predictPrice({ commodity: commodityName, market: marketName, unit_type: "KG", quantity: 50, month, year }),
     getFxSignal(),
     getGlobalBenchmarkSignal(commodityName, BASELINE_TRAINING_END),
     getMlMetadata(),

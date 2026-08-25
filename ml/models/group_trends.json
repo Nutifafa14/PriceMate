@@ -1,0 +1,1418 @@
+{
+  "Maize|||Accra": {
+    "slope": 13.669209558823539,
+    "intercept": 134.8008455882353
+  },
+  "Rice (local)|||Accra": {
+    "slope": 5.7241098169717075,
+    "intercept": 168.37379367720473
+  },
+  "Sorghum|||Accra": {
+    "slope": 11.309197002141323,
+    "intercept": 197.11577087794439
+  },
+  "Yam|||Accra": {
+    "slope": 32.95195058517556,
+    "intercept": 439.3951950585176
+  },
+  "Millet|||Bolga": {
+    "slope": 15.460514721457312,
+    "intercept": 138.84174539292525
+  },
+  "Rice (imported)|||Bolga": {
+    "slope": -3.2890116896918027,
+    "intercept": 252.6573963868225
+  },
+  "Rice (local)|||Bolga": {
+    "slope": 16.07265521064301,
+    "intercept": 87.40713414634155
+  },
+  "Sorghum|||Bolga": {
+    "slope": 9.9004684317719,
+    "intercept": 108.39651731160896
+  },
+  "Yam|||Bolga": {
+    "slope": 173.2669902912622,
+    "intercept": 496.0679611650485
+  },
+  "Cassava|||Cape Coast": {
+    "slope": -1.8668897637795239,
+    "intercept": 58.22976377952759
+  },
+  "Maize|||Cape Coast": {
+    "slope": 35.44135510510512,
+    "intercept": 116.66098348348363
+  },
+  "Plantains (apentu)|||Cape Coast": {
+    "slope": 5.009517699115044,
+    "intercept": 16.519216814159293
+  },
+  "Yam|||Cape Coast": {
+    "slope": 232.29518072289156,
+    "intercept": 312.1385542168674
+  },
+  "Cassava|||Ejura": {
+    "slope": 106.8084210526316,
+    "intercept": -9.172675438596468
+  },
+  "Maize|||Ejura": {
+    "slope": 11.800218579234961,
+    "intercept": 73.81775956284153
+  },
+  "Plantains (apentu)|||Ejura": {
+    "slope": 0.7728827113480556,
+    "intercept": 21.78544935262758
+  },
+  "Rice (imported)|||Ejura": {
+    "slope": -19.860666666666692,
+    "intercept": 253.64200000000002
+  },
+  "Rice (local)|||Ejura": {
+    "slope": 8.294303423848879,
+    "intercept": 141.13673553719002
+  },
+  "Yam|||Ejura": {
+    "slope": -3.536609538002989,
+    "intercept": 468.4899701937407
+  },
+  "Yam|||Ho": {
+    "slope": 190.66666666666666,
+    "intercept": 404.00000000000006
+  },
+  "Plantains (apentu)|||Koforidua": {
+    "slope": 4.775163429654192,
+    "intercept": 21.042709616295582
+  },
+  "Cassava|||Kumasi": {
+    "slope": 32.10547517235361,
+    "intercept": 46.374640893620736
+  },
+  "Maize|||Kumasi": {
+    "slope": 34.73514359351987,
+    "intercept": 84.33464285714291
+  },
+  "Millet|||Kumasi": {
+    "slope": 34.36646412884334,
+    "intercept": 148.4367691556856
+  },
+  "Plantains (apentu)|||Kumasi": {
+    "slope": 5.510496613995487,
+    "intercept": 22.11036711417368
+  },
+  "Rice (imported)|||Kumasi": {
+    "slope": 0.5624318181818045,
+    "intercept": 266.27056818181836
+  },
+  "Rice (local)|||Kumasi": {
+    "slope": 15.080950704225355,
+    "intercept": 134.29010060362174
+  },
+  "Rice (paddy)|||Kumasi": {
+    "slope": 6.118750000000006,
+    "intercept": 87.85624999999997
+  },
+  "Sorghum|||Kumasi": {
+    "slope": 53.8309138204026,
+    "intercept": 103.95419588328433
+  },
+  "Yam|||Kumasi": {
+    "slope": 63.620702421287476,
+    "intercept": 329.3477943971573
+  },
+  "Cassava|||Mankessim": {
+    "slope": 46.25666666666667,
+    "intercept": 45.2833333333333
+  },
+  "Plantains (apentu)|||Mankessim": {
+    "slope": 0.24666666666666776,
+    "intercept": 19.349999999999998
+  },
+  "Yam|||Mankessim": {
+    "slope": 195.15277777777771,
+    "intercept": 392.625
+  },
+  "Plantains (apentu)|||Obuasi": {
+    "slope": 23.174999999999986,
+    "intercept": 21.07499999999999
+  },
+  "Yam|||Obuasi": {
+    "slope": 128.80000000000007,
+    "intercept": 482.0
+  },
+  "Cassava|||Sekondi/Takoradi": {
+    "slope": 10.76021108179421,
+    "intercept": 204.59207124010544
+  },
+  "Rice (imported)|||Sekondi/Takoradi": {
+    "slope": 6.824512248468958,
+    "intercept": 265.3474978127733
+  },
+  "Cassava|||Sunyani": {
+    "slope": 31.934346364018502,
+    "intercept": 42.82640184951661
+  },
+  "Maize|||Sunyani": {
+    "slope": 21.14343145226867,
+    "intercept": 83.31282647584973
+  },
+  "Rice (local)|||Sunyani": {
+    "slope": 15.727916666666662,
+    "intercept": 129.77715686274513
+  },
+  "Yam|||Sunyani": {
+    "slope": 66.20531171623075,
+    "intercept": 267.7996542457902
+  },
+  "Plantains (apentu)|||Tamale": {
+    "slope": 5.248333333333331,
+    "intercept": 16.899444444444452
+  },
+  "Rice (local)|||Tamale": {
+    "slope": 2.9720921544209262,
+    "intercept": 145.64235367372356
+  },
+  "Sorghum|||Tamale": {
+    "slope": 69.2646618357488,
+    "intercept": -11.534565217391233
+  },
+  "Cassava|||Techiman": {
+    "slope": 19.243527105583343,
+    "intercept": 23.319105042584823
+  },
+  "Maize|||Techiman": {
+    "slope": 21.4041070248844,
+    "intercept": 64.87423254789697
+  },
+  "Millet|||Techiman": {
+    "slope": 21.183232918209356,
+    "intercept": 118.97071861326155
+  },
+  "Plantains (apentu)|||Techiman": {
+    "slope": 5.877934782608694,
+    "intercept": 6.730505767524401
+  },
+  "Rice (imported)|||Techiman": {
+    "slope": 15.149364884245019,
+    "intercept": 196.29652735095283
+  },
+  "Rice (local)|||Techiman": {
+    "slope": -5.674650302622718,
+    "intercept": 172.69291526563538
+  },
+  "Yam|||Techiman": {
+    "slope": 13.898008474576244,
+    "intercept": 408.58352165725046
+  },
+  "Cassava|||Tema": {
+    "slope": 75.98533557046977,
+    "intercept": -2.315816554809679
+  },
+  "Maize|||Tema": {
+    "slope": 24.388110831234222,
+    "intercept": 164.805516372796
+  },
+  "Cassava|||Wa": {
+    "slope": 52.38333333333334,
+    "intercept": 64.58333333333333
+  },
+  "Maize|||Wa": {
+    "slope": 34.03829429735234,
+    "intercept": 79.53437881873725
+  },
+  "Millet|||Wa": {
+    "slope": 32.93985343383586,
+    "intercept": 130.03037269681744
+  },
+  "Plantains (apentu)|||Wa": {
+    "slope": 4.065238095238096,
+    "intercept": 26.94333333333333
+  },
+  "Rice (imported)|||Wa": {
+    "slope": 40.33048128342247,
+    "intercept": 165.1467379679145
+  },
+  "Sorghum|||Wa": {
+    "slope": 18.848197556008127,
+    "intercept": 131.42582484725054
+  },
+  "Millet|||Accra": {
+    "slope": 20.71816546762592,
+    "intercept": 177.26881294964022
+  },
+  "Plantains (apentu)|||Sekondi/Takoradi": {
+    "slope": 3.8436200066028396,
+    "intercept": 32.241470782436444
+  },
+  "Rice (imported)|||Cape Coast": {
+    "slope": 9.740642201834852,
+    "intercept": 229.1636926605504
+  },
+  "Rice (local)|||Cape Coast": {
+    "slope": 57.899276538201484,
+    "intercept": 65.94785665990548
+  },
+  "Plantains (apentu)|||Sunyani": {
+    "slope": 5.296819221967962,
+    "intercept": 7.440068649885585
+  },
+  "Rice (imported)|||Sunyani": {
+    "slope": 21.400000000000002,
+    "intercept": 212.25500000000008
+  },
+  "Rice (local)|||Wa": {
+    "slope": 4.284162436548224,
+    "intercept": 220.0590355329949
+  },
+  "Rice (imported)|||Accra": {
+    "slope": -2.219661016949156,
+    "intercept": 225.9418079096045
+  },
+  "Maize|||Bolga": {
+    "slope": 6.06467329545454,
+    "intercept": 107.74258522727268
+  },
+  "Plantains (apentu)|||Bolga": {
+    "slope": 5.727282608695651,
+    "intercept": 27.910978260869562
+  },
+  "Cassava|||Ho": {
+    "slope": 16.13333333333334,
+    "intercept": 66.21666666666665
+  },
+  "Maize|||Ho": {
+    "slope": 7.010714285714311,
+    "intercept": 106.84571428571428
+  },
+  "Maize|||Koforidua": {
+    "slope": -5.367162162162156,
+    "intercept": 190.08378378378376
+  },
+  "Yam|||Koforidua": {
+    "slope": 16.962704081632676,
+    "intercept": 438.78541836734667
+  },
+  "Maize|||Sekondi/Takoradi": {
+    "slope": 33.716653719749026,
+    "intercept": 123.86176874813272
+  },
+  "Yam|||Sekondi/Takoradi": {
+    "slope": 152.27856304985335,
+    "intercept": 250.55785190615828
+  },
+  "Sorghum|||Techiman": {
+    "slope": 19.794213515048273,
+    "intercept": 120.31909426462236
+  },
+  "Plantains (apentu)|||Tema": {
+    "slope": 15.320124113475172,
+    "intercept": -13.453486997635865
+  },
+  "Yam|||Wa": {
+    "slope": 114.83140875133404,
+    "intercept": 311.90279615795083
+  },
+  "Cassava|||Accra": {
+    "slope": 34.50912110373019,
+    "intercept": 36.16926928972913
+  },
+  "Plantains (apentu)|||Accra": {
+    "slope": 4.4143077956989245,
+    "intercept": 24.8081182795699
+  },
+  "Rice (local)|||Mankessim": {
+    "slope": 16.566666666666702,
+    "intercept": 169.83333333333331
+  },
+  "Maize|||Tamale": {
+    "slope": 7.961438356164379,
+    "intercept": 85.71986301369863
+  },
+  "Millet|||Tamale": {
+    "slope": 52.989914089347025,
+    "intercept": 23.78790378006899
+  },
+  "Rice (imported)|||Tamale": {
+    "slope": 46.51842105263157,
+    "intercept": 126.61880382775134
+  },
+  "Cassava|||Tamale": {
+    "slope": 17.12868512110727,
+    "intercept": 104.41659746251433
+  },
+  "Cassava|||Koforidua": {
+    "slope": 36.58901840490797,
+    "intercept": 29.459570552147245
+  },
+  "Rice (local)|||Sekondi/Takoradi": {
+    "slope": 2.0345513654096044,
+    "intercept": 248.63274382314697
+  },
+  "Rice (imported)|||Tema": {
+    "slope": 11.525135135135143,
+    "intercept": 243.66405405405396
+  },
+  "Cassava|||Bolga": {
+    "slope": -1.023157894736829,
+    "intercept": 229.88647773279354
+  },
+  "Yam|||Tamale": {
+    "slope": 30.801818181818177,
+    "intercept": 234.69545454545445
+  },
+  "Rice (local)|||Garu": {
+    "slope": 44.77432515337424,
+    "intercept": -83.42098159509193
+  },
+  "Cassava|||Kintampo": {
+    "slope": 11.619940119760493,
+    "intercept": 86.72640718562869
+  },
+  "Maize|||Kintampo": {
+    "slope": 35.67041416165666,
+    "intercept": -26.138971275885137
+  },
+  "Rice (imported)|||Kintampo": {
+    "slope": 88.7859825327511,
+    "intercept": -149.43231441048025
+  },
+  "Rice (local)|||Kintampo": {
+    "slope": 50.79859922178986,
+    "intercept": -78.60704280155615
+  },
+  "Rice (local)|||Tema": {
+    "slope": 83.41941176470586,
+    "intercept": -33.88941176470572
+  },
+  "Yam|||Tema": {
+    "slope": 173.9000000000002,
+    "intercept": -125.98333333333422
+  },
+  "Maize|||Yendi": {
+    "slope": 93.31350877192982,
+    "intercept": -334.71644736842103
+  },
+  "Eggplants|||Accra": {
+    "slope": 77.85111111111112,
+    "intercept": -229.87833333333322
+  },
+  "Fish (mackerel, fresh)|||Accra": {
+    "slope": -56.1340789473685,
+    "intercept": 633.4518421052636
+  },
+  "Gari|||Accra": {
+    "slope": -38.729615384615414,
+    "intercept": 462.1538461538462
+  },
+  "Meat (chicken, local)|||Accra": {
+    "slope": 113.41437007874018,
+    "intercept": -414.77901574803155
+  },
+  "Onions|||Accra": {
+    "slope": 344.7990476190476,
+    "intercept": -1366.259523809524
+  },
+  "Peppers (fresh)|||Accra": {
+    "slope": 10.882840466926083,
+    "intercept": 166.9812840466925
+  },
+  "Plantains (apem)|||Accra": {
+    "slope": -70.45093877551015,
+    "intercept": 456.9355102040815
+  },
+  "Tomatoes (local)|||Accra": {
+    "slope": 27.936288659793828,
+    "intercept": 34.65257731958758
+  },
+  "Tomatoes (navrongo)|||Accra": {
+    "slope": 25.69900900900902,
+    "intercept": -30.918108108108164
+  },
+  "Fish (mackerel, fresh)|||Bolga": {
+    "slope": -79.82499999999992,
+    "intercept": 520.6899999999995
+  },
+  "Meat (chicken, local)|||Bolga": {
+    "slope": 126.60750000000009,
+    "intercept": -516.1750000000008
+  },
+  "Tomatoes (local)|||Bolga": {
+    "slope": 140.50699999999983,
+    "intercept": -526.7029999999988
+  },
+  "Tomatoes (navrongo)|||Bolga": {
+    "slope": 35.387999999999934,
+    "intercept": -87.8719999999996
+  },
+  "Eggs|||Cape Coast": {
+    "slope": -147.52999999999994,
+    "intercept": 974.3999999999999
+  },
+  "Fish (mackerel, fresh)|||Cape Coast": {
+    "slope": -113.61800000000004,
+    "intercept": 944.1500000000004
+  },
+  "Maize (yellow)|||Cape Coast": {
+    "slope": 120.40743506493504,
+    "intercept": -327.2437662337658
+  },
+  "Meat (chicken, local)|||Cape Coast": {
+    "slope": 23.41800000000002,
+    "intercept": 7.589999999999937
+  },
+  "Millet|||Cape Coast": {
+    "slope": 156.93909090909088,
+    "intercept": -349.13181818181795
+  },
+  "Peppers (dried)|||Cape Coast": {
+    "slope": 431.58666666666727,
+    "intercept": -1698.0366666666698
+  },
+  "Peppers (fresh)|||Cape Coast": {
+    "slope": 322.95199999999977,
+    "intercept": -1082.4999999999984
+  },
+  "Plantains (apem)|||Cape Coast": {
+    "slope": -42.79316091954022,
+    "intercept": 353.11367816091945
+  },
+  "Sorghum|||Cape Coast": {
+    "slope": 275.0237735849059,
+    "intercept": -830.0186792452846
+  },
+  "Tomatoes (navrongo)|||Cape Coast": {
+    "slope": 192.14999999999992,
+    "intercept": -740.9979999999994
+  },
+  "Yam (puna)|||Cape Coast": {
+    "slope": 331.7600000000002,
+    "intercept": -1138.7100000000005
+  },
+  "Eggs|||Ejura": {
+    "slope": 64.79999999999993,
+    "intercept": -86.0799999999998
+  },
+  "Fish (mackerel, fresh)|||Ejura": {
+    "slope": -8.237999999999971,
+    "intercept": 290.6499999999999
+  },
+  "Maize (yellow)|||Ejura": {
+    "slope": 81.52089583333328,
+    "intercept": -246.18431249999972
+  },
+  "Meat (chicken, local)|||Ejura": {
+    "slope": 55.2025,
+    "intercept": -174.50349999999995
+  },
+  "Millet|||Ejura": {
+    "slope": 39.854079999999996,
+    "intercept": 55.10631999999984
+  },
+  "Onions|||Ejura": {
+    "slope": 137.03166666666672,
+    "intercept": -537.5533333333339
+  },
+  "Sorghum|||Ejura": {
+    "slope": 46.72200000000001,
+    "intercept": 50.863571428571355
+  },
+  "Cassava|||Garu": {
+    "slope": -508.44000000000125,
+    "intercept": 2648.8400000000074
+  },
+  "Maize|||Garu": {
+    "slope": 92.22642857142853,
+    "intercept": -321.6422077922073
+  },
+  "Maize (yellow)|||Garu": {
+    "slope": 60.257105263157925,
+    "intercept": -171.34894736842134
+  },
+  "Millet|||Garu": {
+    "slope": 89.33807471264366,
+    "intercept": -255.56525862068963
+  },
+  "Rice (imported)|||Garu": {
+    "slope": 59.95956521739136,
+    "intercept": -94.38913043478281
+  },
+  "Yam|||Garu": {
+    "slope": 136.31791666666672,
+    "intercept": -310.5704166666669
+  },
+  "Eggs|||Kintampo": {
+    "slope": 117.79522867737946,
+    "intercept": -371.3795797280592
+  },
+  "Fish (mackerel, fresh)|||Kintampo": {
+    "slope": 5.4975000000000405,
+    "intercept": 307.67999999999967
+  },
+  "Gari|||Kintampo": {
+    "slope": 17.003034188034157,
+    "intercept": 155.92670940170945
+  },
+  "Maize (yellow)|||Kintampo": {
+    "slope": 86.86366013071896,
+    "intercept": -284.90261437908464
+  },
+  "Meat (chicken, local)|||Kintampo": {
+    "slope": 165.66828947368418,
+    "intercept": -689.4174122807017
+  },
+  "Millet|||Kintampo": {
+    "slope": 157.49162790697662,
+    "intercept": -517.2786046511617
+  },
+  "Onions|||Kintampo": {
+    "slope": 278.56333333333345,
+    "intercept": -1103.1566666666665
+  },
+  "Peppers (fresh)|||Kintampo": {
+    "slope": -6.746625000000016,
+    "intercept": 343.57373214285724
+  },
+  "Plantains (apem)|||Kintampo": {
+    "slope": 4.370503144654084,
+    "intercept": 36.07150943396229
+  },
+  "Plantains (apentu)|||Kintampo": {
+    "slope": -2.906521739130448,
+    "intercept": 61.94630434782616
+  },
+  "Sorghum|||Kintampo": {
+    "slope": 102.3382962962962,
+    "intercept": -276.2795061728388
+  },
+  "Tomatoes (navrongo)|||Kintampo": {
+    "slope": 9.984800000000009,
+    "intercept": 15.129199999999981
+  },
+  "Eggs|||Koforidua": {
+    "slope": 121.71993788819887,
+    "intercept": -256.04664596273386
+  },
+  "Gari|||Koforidua": {
+    "slope": 141.17513227513217,
+    "intercept": -506.42830687830605
+  },
+  "Meat (chicken, local)|||Koforidua": {
+    "slope": 34.48416666666656,
+    "intercept": -69.97333333333273
+  },
+  "Plantains (apem)|||Koforidua": {
+    "slope": -67.23264423076924,
+    "intercept": 466.36975961538485
+  },
+  "Cowpeas (white)|||Kumasi": {
+    "slope": 36.08477528089892,
+    "intercept": 173.04910112359536
+  },
+  "Eggplants|||Kumasi": {
+    "slope": 108.39168141592913,
+    "intercept": -265.0915044247783
+  },
+  "Fish (mackerel, fresh)|||Kumasi": {
+    "slope": -84.60805128205115,
+    "intercept": 776.9551794871785
+  },
+  "Gari|||Kumasi": {
+    "slope": 64.28015290519875,
+    "intercept": -95.07651376146747
+  },
+  "Maize (yellow)|||Kumasi": {
+    "slope": 106.50453488372095,
+    "intercept": -275.7946976744189
+  },
+  "Meat (chicken)|||Kumasi": {
+    "slope": 54.82387959866225,
+    "intercept": -45.82508361204027
+  },
+  "Meat (chicken, local)|||Kumasi": {
+    "slope": 28.971394101876676,
+    "intercept": -17.114664879356514
+  },
+  "Onions|||Kumasi": {
+    "slope": 126.87298507462691,
+    "intercept": -407.4440298507463
+  },
+  "Peppers (dried)|||Kumasi": {
+    "slope": 60.81750000000001,
+    "intercept": -190.09687499999998
+  },
+  "Peppers (fresh)|||Kumasi": {
+    "slope": 52.95309890109894,
+    "intercept": 85.33028571428551
+  },
+  "Plantains (apem)|||Kumasi": {
+    "slope": -33.9556976744186,
+    "intercept": 278.9322093023256
+  },
+  "Soybeans|||Kumasi": {
+    "slope": -1.7388679245282737,
+    "intercept": 168.29754716981114
+  },
+  "Cowpeas (white)|||Sekondi/Takoradi": {
+    "slope": 22.59724489795916,
+    "intercept": 421.9067346938776
+  },
+  "Eggplants|||Sekondi/Takoradi": {
+    "slope": 163.7818814675448,
+    "intercept": -622.0031420508002
+  },
+  "Gari|||Sekondi/Takoradi": {
+    "slope": 88.43699404761902,
+    "intercept": -31.631875000000296
+  },
+  "Maize (yellow)|||Sekondi/Takoradi": {
+    "slope": 105.69833333333334,
+    "intercept": -245.2283333333332
+  },
+  "Meat (chicken, local)|||Sekondi/Takoradi": {
+    "slope": 142.7787450199202,
+    "intercept": -552.3412749003978
+  },
+  "Millet|||Sekondi/Takoradi": {
+    "slope": 119.10857466063341,
+    "intercept": -192.8701131221712
+  },
+  "Onions|||Sekondi/Takoradi": {
+    "slope": 165.63542462845004,
+    "intercept": -602.3571019108272
+  },
+  "Peppers (fresh)|||Sekondi/Takoradi": {
+    "slope": 54.15892376681619,
+    "intercept": 185.14017937219708
+  },
+  "Plantains (apem)|||Sekondi/Takoradi": {
+    "slope": -62.50655485040796,
+    "intercept": 474.4990480507705
+  },
+  "Sorghum|||Sekondi/Takoradi": {
+    "slope": 129.5705921052631,
+    "intercept": -196.5366447368411
+  },
+  "Soybeans|||Sekondi/Takoradi": {
+    "slope": -54.09610091743121,
+    "intercept": 523.3126146788993
+  },
+  "Tomatoes (local)|||Sekondi/Takoradi": {
+    "slope": -16.329285714285703,
+    "intercept": 180.6377142857142
+  },
+  "Tomatoes (navrongo)|||Sekondi/Takoradi": {
+    "slope": -6.500000000000014,
+    "intercept": 138.74000000000018
+  },
+  "Eggplants|||Sunyani": {
+    "slope": 198.32000000000025,
+    "intercept": -788.0466666666676
+  },
+  "Eggs|||Sunyani": {
+    "slope": 111.53794573643407,
+    "intercept": -315.890426356589
+  },
+  "Fish (mackerel, fresh)|||Sunyani": {
+    "slope": -72.418,
+    "intercept": 623.6500000000002
+  },
+  "Gari|||Sunyani": {
+    "slope": 36.252457627118666,
+    "intercept": 71.8680508474575
+  },
+  "Meat (chicken, local)|||Sunyani": {
+    "slope": 149.665072463768,
+    "intercept": -585.810869565217
+  },
+  "Plantains (apem)|||Sunyani": {
+    "slope": -36.60978723404256,
+    "intercept": 266.289219858156
+  },
+  "Tomatoes (local)|||Sunyani": {
+    "slope": 29.734565217391257,
+    "intercept": -53.67456521739111
+  },
+  "Tomatoes (navrongo)|||Sunyani": {
+    "slope": 127.05571428571405,
+    "intercept": -496.07285714285587
+  },
+  "Cowpeas (white)|||Tamale": {
+    "slope": 51.897872340425565,
+    "intercept": 1.9074468085104337
+  },
+  "Eggs|||Tamale": {
+    "slope": 140.6394074074073,
+    "intercept": -484.90318518518444
+  },
+  "Meat (chicken)|||Tamale": {
+    "slope": 157.82483870967744,
+    "intercept": -468.2482795698922
+  },
+  "Peppers (dried)|||Tamale": {
+    "slope": 138.3100000000003,
+    "intercept": -519.9100000000019
+  },
+  "Plantains (apem)|||Tamale": {
+    "slope": -8.206470588235291,
+    "intercept": 128.01858823529412
+  },
+  "Soybeans|||Tamale": {
+    "slope": 56.05357142857146,
+    "intercept": -80.00976190476204
+  },
+  "Tomatoes (local)|||Tamale": {
+    "slope": -3.5849999999996243,
+    "intercept": 222.30999999999804
+  },
+  "Tomatoes (navrongo)|||Tamale": {
+    "slope": 1.0315384615384628,
+    "intercept": 27.216923076923074
+  },
+  "Yam (puna)|||Tamale": {
+    "slope": 240.29560975609704,
+    "intercept": -843.2864227642239
+  },
+  "Cowpeas (white)|||Techiman": {
+    "slope": 65.33902439024392,
+    "intercept": -72.4109756097561
+  },
+  "Eggplants|||Techiman": {
+    "slope": 98.65551083591333,
+    "intercept": -333.7260784313724
+  },
+  "Eggs|||Techiman": {
+    "slope": 119.90244224422446,
+    "intercept": -376.1512541254127
+  },
+  "Gari|||Techiman": {
+    "slope": 11.241987447698751,
+    "intercept": 188.51527196652722
+  },
+  "Onions|||Techiman": {
+    "slope": 109.11477678571427,
+    "intercept": -359.8075446428572
+  },
+  "Peppers (dried)|||Techiman": {
+    "slope": 39.776716417910414,
+    "intercept": -71.03731343283565
+  },
+  "Peppers (fresh)|||Techiman": {
+    "slope": -1.3093380614657175,
+    "intercept": 284.73011820330964
+  },
+  "Plantains (apem)|||Techiman": {
+    "slope": -19.943326248671625,
+    "intercept": 177.52818278427205
+  },
+  "Tomatoes (local)|||Techiman": {
+    "slope": -19.67436893203887,
+    "intercept": 163.6809708737866
+  },
+  "Tomatoes (navrongo)|||Techiman": {
+    "slope": -9.220038167938911,
+    "intercept": 112.8381297709922
+  },
+  "Cowpeas (white)|||Tema": {
+    "slope": -44.65392307692298,
+    "intercept": 913.0184615384608
+  },
+  "Eggs|||Tema": {
+    "slope": 192.34842857142863,
+    "intercept": -487.98614285714257
+  },
+  "Fish (mackerel, fresh)|||Tema": {
+    "slope": 194.13400000000001,
+    "intercept": -357.7000000000005
+  },
+  "Gari|||Tema": {
+    "slope": 160.84785714285744,
+    "intercept": -531.6233333333352
+  },
+  "Meat (chicken, local)|||Tema": {
+    "slope": 129.3538801261829,
+    "intercept": -496.25214511041
+  },
+  "Millet|||Tema": {
+    "slope": 32.750538461538454,
+    "intercept": 234.52407692307713
+  },
+  "Peppers (dried)|||Tema": {
+    "slope": 17.92,
+    "intercept": -37.34
+  },
+  "Peppers (fresh)|||Tema": {
+    "slope": 100.12200000000004,
+    "intercept": -57.05800000000013
+  },
+  "Plantains (apem)|||Tema": {
+    "slope": -50.270965909090826,
+    "intercept": 469.5980113636358
+  },
+  "Sorghum|||Tema": {
+    "slope": 40.17732142857142,
+    "intercept": 282.63660714285703
+  },
+  "Tomatoes (local)|||Tema": {
+    "slope": 286.6066666666668,
+    "intercept": -1122.0833333333333
+  },
+  "Tomatoes (navrongo)|||Tema": {
+    "slope": 51.77033898305083,
+    "intercept": -169.3837288135591
+  },
+  "Yam (puna)|||Tema": {
+    "slope": 725.9301162790701,
+    "intercept": -2716.601976744188
+  },
+  "Millet|||Yendi": {
+    "slope": 131.22614727854852,
+    "intercept": -446.28339381003144
+  },
+  "Rice (imported)|||Yendi": {
+    "slope": 63.83013574660636,
+    "intercept": -64.47171945701356
+  },
+  "Eggs|||Accra": {
+    "slope": 109.63420833333329,
+    "intercept": -295.0264583333333
+  },
+  "Maize (yellow)|||Accra": {
+    "slope": 78.76047945205474,
+    "intercept": -181.10184931506797
+  },
+  "Meat (chicken)|||Accra": {
+    "slope": -80.41518072289163,
+    "intercept": 662.622168674699
+  },
+  "Peppers (dried)|||Accra": {
+    "slope": 197.8050000000002,
+    "intercept": -757.2200000000012
+  },
+  "Eggs|||Bolga": {
+    "slope": 95.4196551724138,
+    "intercept": -227.85620689655164
+  },
+  "Plantains (apem)|||Bolga": {
+    "slope": -37.78898734177219,
+    "intercept": 334.22430379746856
+  },
+  "Tomatoes (local)|||Cape Coast": {
+    "slope": 237.8849999999998,
+    "intercept": -926.3349999999987
+  },
+  "Gari|||Ejura": {
+    "slope": 158.3666666666666,
+    "intercept": -406.92333333333283
+  },
+  "Tomatoes (local)|||Ejura": {
+    "slope": 25.869999999999965,
+    "intercept": -20.161666666666466
+  },
+  "Tomatoes (navrongo)|||Ejura": {
+    "slope": 167.81333333333328,
+    "intercept": -659.0433333333332
+  },
+  "Cassava|||Hohoe": {
+    "slope": -138.02444444444436,
+    "intercept": 852.3833333333328
+  },
+  "Eggplants|||Hohoe": {
+    "slope": 166.38900990098998,
+    "intercept": -663.4847524752463
+  },
+  "Eggs|||Hohoe": {
+    "slope": 182.28872509960152,
+    "intercept": -695.1391235059752
+  },
+  "Fish (mackerel, fresh)|||Hohoe": {
+    "slope": 61.996923076923075,
+    "intercept": -122.333076923077
+  },
+  "Gari|||Hohoe": {
+    "slope": 49.890000000000015,
+    "intercept": -54.03249999999997
+  },
+  "Maize|||Hohoe": {
+    "slope": 75.76192307692307,
+    "intercept": -182.2897435897435
+  },
+  "Meat (chicken)|||Hohoe": {
+    "slope": 66.34949999999998,
+    "intercept": -87.84972727272726
+  },
+  "Meat (chicken, local)|||Hohoe": {
+    "slope": 168.69014925373128,
+    "intercept": -750.2019402985072
+  },
+  "Millet|||Hohoe": {
+    "slope": 13.415882352941185,
+    "intercept": 229.45823529411763
+  },
+  "Onions|||Hohoe": {
+    "slope": 125.29956521739132,
+    "intercept": -445.9543478260871
+  },
+  "Peppers (dried)|||Hohoe": {
+    "slope": 104.22615384615378,
+    "intercept": -415.282307692307
+  },
+  "Plantains (apentu)|||Hohoe": {
+    "slope": -1.2700000000000016,
+    "intercept": 51.82999999999999
+  },
+  "Rice (imported)|||Hohoe": {
+    "slope": -5.615955056179768,
+    "intercept": 316.87674157303354
+  },
+  "Rice (local)|||Hohoe": {
+    "slope": 19.9368367346939,
+    "intercept": 133.3385714285713
+  },
+  "Tomatoes (local)|||Hohoe": {
+    "slope": -24.159000000000006,
+    "intercept": 246.5689999999999
+  },
+  "Tomatoes (local)|||Kintampo": {
+    "slope": 2.75745508982036,
+    "intercept": 1.6571856287425106
+  },
+  "Yam|||Kintampo": {
+    "slope": 74.53914285714286,
+    "intercept": 52.030000000000086
+  },
+  "Yam (puna)|||Kintampo": {
+    "slope": 80.02303571428564,
+    "intercept": 131.53232142857172
+  },
+  "Fish (mackerel, fresh)|||Koforidua": {
+    "slope": 245.7925000000002,
+    "intercept": -482.80000000000143
+  },
+  "Sorghum|||Koforidua": {
+    "slope": 160.01828828828815,
+    "intercept": -451.3616216216207
+  },
+  "Fish (mackerel, fresh)|||Sekondi/Takoradi": {
+    "slope": -39.306407766990276,
+    "intercept": 574.621844660194
+  },
+  "Peppers (dried)|||Sekondi/Takoradi": {
+    "slope": 112.08162790697666,
+    "intercept": -413.15302325581393
+  },
+  "Maize (yellow)|||Sunyani": {
+    "slope": 111.23965909090913,
+    "intercept": -362.9045454545453
+  },
+  "Meat (chicken)|||Sunyani": {
+    "slope": 49.41904306220093,
+    "intercept": 18.481387559808713
+  },
+  "Onions|||Sunyani": {
+    "slope": 244.39166666666654,
+    "intercept": -972.5716666666655
+  },
+  "Maize (yellow)|||Tamale": {
+    "slope": 87.83894736842142,
+    "intercept": -296.85315789473907
+  },
+  "Fish (mackerel, fresh)|||Techiman": {
+    "slope": 104.29918918918922,
+    "intercept": -123.18837837837869
+  },
+  "Maize (yellow)|||Techiman": {
+    "slope": 75.02054838709677,
+    "intercept": -224.11303225806435
+  },
+  "Meat (chicken)|||Techiman": {
+    "slope": 8.38253521126758,
+    "intercept": 212.64190140845088
+  },
+  "Meat (chicken, local)|||Techiman": {
+    "slope": 207.44664596273287,
+    "intercept": -837.6006832298132
+  },
+  "Yam (puna)|||Techiman": {
+    "slope": 101.17380813953481,
+    "intercept": 92.95002906976781
+  },
+  "Meat (chicken)|||Tema": {
+    "slope": 135.774411764706,
+    "intercept": -240.94776470588263
+  },
+  "Sorghum|||Yendi": {
+    "slope": 126.16291545189499,
+    "intercept": -435.32408163265256
+  },
+  "Yam (puna)|||Accra": {
+    "slope": 105.90090909090914,
+    "intercept": -103.66159090909117
+  },
+  "Plantains (apem)|||Garu": {
+    "slope": -59.13500000000013,
+    "intercept": 387.0800000000008
+  },
+  "Sorghum|||Garu": {
+    "slope": 96.05750000000002,
+    "intercept": -322.28233333333344
+  },
+  "Onions|||Koforidua": {
+    "slope": 202.70392857142855,
+    "intercept": -680.564285714286
+  },
+  "Tomatoes (navrongo)|||Koforidua": {
+    "slope": 130.70857142857153,
+    "intercept": -504.6542857142863
+  },
+  "Peppers (fresh)|||Hohoe": {
+    "slope": -158.52759615384605,
+    "intercept": 1344.6449999999998
+  },
+  "Plantains (apem)|||Hohoe": {
+    "slope": -21.094492753623186,
+    "intercept": 150.78623188405794
+  },
+  "Sorghum|||Hohoe": {
+    "slope": 80.74861111111113,
+    "intercept": -25.414351851851936
+  },
+  "Yam (puna)|||Hohoe": {
+    "slope": 223.35645161290316,
+    "intercept": -372.136129032258
+  },
+  "Peppers (fresh)|||Koforidua": {
+    "slope": 201.09480000000016,
+    "intercept": -678.7712000000015
+  },
+  "Tomatoes (local)|||Koforidua": {
+    "slope": -12.820576923077006,
+    "intercept": 188.02480769230831
+  },
+  "Cowpeas (white)|||Hohoe": {
+    "slope": -127.59788732394357,
+    "intercept": 1100.1583098591545
+  },
+  "Tomatoes (navrongo)|||Hohoe": {
+    "slope": -29.728076923076927,
+    "intercept": 249.83923076923074
+  },
+  "Yam|||Hohoe": {
+    "slope": 204.1910975609757,
+    "intercept": -279.90890243902504
+  },
+  "Fish (mackerel, fresh)|||Tamale": {
+    "slope": -9.909999999999636,
+    "intercept": 502.66999999999797
+  },
+  "Eggs|||Kumasi": {
+    "slope": 148.6213855421686,
+    "intercept": -508.21301204819264
+  },
+  "Tomatoes (local)|||Kumasi": {
+    "slope": -141.0361313868616,
+    "intercept": 1011.6197080291993
+  },
+  "Tomatoes (navrongo)|||Kumasi": {
+    "slope": -50.20089005235598,
+    "intercept": 401.166963350785
+  },
+  "Eggs|||Sekondi/Takoradi": {
+    "slope": 198.91834158415855,
+    "intercept": -724.9149257425746
+  },
+  "Yam (puna)|||Sekondi/Takoradi": {
+    "slope": 671.9676254826257,
+    "intercept": -2716.5693822393832
+  },
+  "Gari|||Bolga": {
+    "slope": 70.34461538461538,
+    "intercept": -142.04076923076897
+  },
+  "Peppers (fresh)|||Ejura": {
+    "slope": -444.4450000000011,
+    "intercept": 2823.1250000000073
+  },
+  "Cowpeas (white)|||Kintampo": {
+    "slope": 28.30180327868856,
+    "intercept": 135.87672131147536
+  },
+  "Eggplants|||Kintampo": {
+    "slope": -0.7508333333333277,
+    "intercept": 276.11249999999984
+  },
+  "Cowpeas (white)|||Koforidua": {
+    "slope": 53.641842105263244,
+    "intercept": 147.37421052631532
+  },
+  "Maize (yellow)|||Koforidua": {
+    "slope": 117.64124999999993,
+    "intercept": -265.80624999999975
+  },
+  "Yam (puna)|||Kumasi": {
+    "slope": 217.29055147058816,
+    "intercept": -278.52047794117567
+  },
+  "Cowpeas (white)|||Sunyani": {
+    "slope": 40.869277108433806,
+    "intercept": 157.06927710843325
+  },
+  "Peppers (fresh)|||Sunyani": {
+    "slope": 37.28181818181822,
+    "intercept": 147.2931818181816
+  },
+  "Yam (puna)|||Sunyani": {
+    "slope": 149.1384561403509,
+    "intercept": 35.83933333333312
+  },
+  "Gari|||Tamale": {
+    "slope": 33.479000000000006,
+    "intercept": 28.177111111111014
+  },
+  "Peppers (fresh)|||Tamale": {
+    "slope": -70.51590604026843,
+    "intercept": 828.4440268456375
+  },
+  "Eggplants|||Tema": {
+    "slope": 69.00247191011235,
+    "intercept": 35.57426966292162
+  },
+  "Onions|||Tema": {
+    "slope": 293.04772727272734,
+    "intercept": -1262.6972727272728
+  },
+  "Rice (local)|||Yendi": {
+    "slope": 74.46131578947364,
+    "intercept": -237.3076315789471
+  },
+  "Meat (chicken)|||Kintampo": {
+    "slope": -32.775607476635486,
+    "intercept": 420.68598130841104
+  },
+  "Meat (chicken)|||Koforidua": {
+    "slope": 91.5526666666667,
+    "intercept": -113.37400000000036
+  },
+  "Soybeans|||Techiman": {
+    "slope": -7.984785276073572,
+    "intercept": 170.10325153374197
+  },
+  "Cowpeas (white)|||Bolga": {
+    "slope": 638.8616666666662,
+    "intercept": -2987.753333333329
+  },
+  "Soybeans|||Bolga": {
+    "slope": -10.256666666666655,
+    "intercept": 185.61749999999995
+  },
+  "Gari|||Cape Coast": {
+    "slope": 0.9803448275861947,
+    "intercept": 572.6796551724137
+  },
+  "Cowpeas (white)|||Ejura": {
+    "slope": -28.58666666666671,
+    "intercept": 387.84333333333365
+  },
+  "Plantains (apem)|||Ejura": {
+    "slope": -1.5249999999999677,
+    "intercept": 41.219999999999814
+  },
+  "Soybeans|||Ejura": {
+    "slope": -30.13,
+    "intercept": 399.60999999999996
+  },
+  "Yam (puna)|||Ejura": {
+    "slope": 562.6982352941177,
+    "intercept": -2482.750588235295
+  },
+  "Peppers (fresh)|||Garu": {
+    "slope": -137.36600000000058,
+    "intercept": 936.0860000000032
+  },
+  "Yam (puna)|||Garu": {
+    "slope": 186.04000000000016,
+    "intercept": -449.6050000000004
+  },
+  "Millet|||Koforidua": {
+    "slope": 166.5976315789474,
+    "intercept": -626.5768421052635
+  },
+  "Yam (puna)|||Koforidua": {
+    "slope": 161.25214285714276,
+    "intercept": -173.31714285714213
+  },
+  "Millet|||Sunyani": {
+    "slope": 212.87249999999977,
+    "intercept": -837.8999999999987
+  },
+  "Cowpeas (white)|||Accra": {
+    "slope": 42.30333333333336,
+    "intercept": 110.9955555555553
+  },
+  "Soybeans|||Accra": {
+    "slope": 41.98806122448981,
+    "intercept": -122.95755102040816
+  },
+  "Peppers (fresh)|||Bolga": {
+    "slope": 19.296071428571395,
+    "intercept": 165.30678571428584
+  },
+  "Eggs|||Garu": {
+    "slope": 171.32113636363616,
+    "intercept": -801.7924999999991
+  },
+  "Gari|||Garu": {
+    "slope": -1.5449999999999418,
+    "intercept": 226.60999999999956
+  },
+  "Plantains (apentu)|||Garu": {
+    "slope": -26.702500000000008,
+    "intercept": 186.10500000000008
+  },
+  "Soybeans|||Kintampo": {
+    "slope": 13.211034482758617,
+    "intercept": 17.224482758620777
+  },
+  "Soybeans|||Koforidua": {
+    "slope": 34.97833333333332,
+    "intercept": 31.221250000000186
+  },
+  "Soybeans|||Sunyani": {
+    "slope": -8.020645161290249,
+    "intercept": 163.9858064516124
+  },
+  "Meat (chicken, local)|||Yendi": {
+    "slope": 63.88044943820234,
+    "intercept": -117.86707865168593
+  },
+  "Peppers (dried)|||Koforidua": {
+    "slope": 168.86666666666656,
+    "intercept": -760.1233333333322
+  },
+  "Meat (chicken)|||Sekondi/Takoradi": {
+    "slope": 372.2509375000001,
+    "intercept": -1792.5403125000012
+  },
+  "Soybeans|||Tema": {
+    "slope": 8.346842105263542,
+    "intercept": 265.8384210526293
+  },
+  "Peppers (fresh)|||Wa": {
+    "slope": -56.206296296296266,
+    "intercept": 700.1018518518515
+  },
+  "Eggs|||Wa": {
+    "slope": 158.17249999999976,
+    "intercept": -712.9424999999981
+  },
+  "Meat (chicken)|||Bolga": {
+    "slope": 12.390000000000013,
+    "intercept": 143.36499999999984
+  },
+  "Soybeans|||Hohoe": {
+    "slope": 22.075000000000017,
+    "intercept": -69.96000000000014
+  },
+  "Maize (yellow)|||Hohoe": {
+    "slope": 53.309999999999775,
+    "intercept": -106.23999999999839
+  },
+  "Maize (yellow)|||Wa": {
+    "slope": 132.87066666666655,
+    "intercept": -560.0786666666659
+  },
+  "Maize (yellow)|||Tema": {
+    "slope": 149.99999999999986,
+    "intercept": -379.9999999999989
+  },
+  "Cassava|||Nkwanta": {
+    "slope": 975.7791666666654,
+    "intercept": -6689.786666666654
+  },
+  "Eggs|||Nkwanta": {
+    "slope": -592.4670000000001,
+    "intercept": 5774.501000000001
+  },
+  "Gari|||Nkwanta": {
+    "slope": 42.79200000000001,
+    "intercept": 8.521999999999698
+  },
+  "Maize|||Nkwanta": {
+    "slope": 118.736,
+    "intercept": -420.2720000000003
+  },
+  "Meat (chicken, local)|||Nkwanta": {
+    "slope": 121.1225000000001,
+    "intercept": -283.9700000000003
+  },
+  "Millet|||Nkwanta": {
+    "slope": 11.190499999999822,
+    "intercept": 636.6285000000015
+  },
+  "Plantains (apem)|||Nkwanta": {
+    "slope": 253.34000000000003,
+    "intercept": -1750.6499999999999
+  },
+  "Plantains (apentu)|||Nkwanta": {
+    "slope": 142.52450000000005,
+    "intercept": -956.074
+  },
+  "Rice (local)|||Nkwanta": {
+    "slope": 104.82299999999991,
+    "intercept": -460.6389999999992
+  },
+  "Sorghum|||Nkwanta": {
+    "slope": 167.70999999999992,
+    "intercept": -653.1239999999998
+  },
+  "Soybeans|||Nkwanta": {
+    "slope": 155.8384999999999,
+    "intercept": -980.0554999999995
+  },
+  "Yam (puna)|||Nkwanta": {
+    "slope": 48.64650000000003,
+    "intercept": 369.3904999999996
+  },
+  "Meat (chicken, local)|||Tamale": {
+    "slope": 73.76499999999987,
+    "intercept": -89.68499999999891
+  },
+  "Meat (chicken)|||Nkwanta": {
+    "slope": -8.844999999999967,
+    "intercept": 341.4024999999997
+  },
+  "Peppers (fresh)|||Nkwanta": {
+    "slope": -95.03750000000058,
+    "intercept": 932.7150000000047
+  },
+  "Rice (imported)|||Nkwanta": {
+    "slope": -5.844166666666228,
+    "intercept": 439.5758333333299
+  },
+  "Meat (chicken, local)|||Wa": {
+    "slope": 18.55999999999918,
+    "intercept": 128.83500000000623
+  },
+  "Tomatoes (navrongo)|||Wa": {
+    "slope": -22.459999999999948,
+    "intercept": 232.59999999999962
+  },
+  "Yam (puna)|||Wa": {
+    "slope": 48.814999999999614,
+    "intercept": 724.455000000003
+  },
+  "Yam|||Nkwanta": {
+    "slope": -14.623333333333628,
+    "intercept": 861.4166666666687
+  },
+  "Fish (mackerel, fresh)|||Wa": {
+    "slope": -347.40999999999946,
+    "intercept": 3165.199999999996
+  },
+  "Gari|||Wa": {
+    "slope": -24.36999999999997,
+    "intercept": 669.2599999999999
+  },
+  "Tomatoes (local)|||Nkwanta": {
+    "slope": 6.29166666666666,
+    "intercept": -29.54666666666659
+  }
+}

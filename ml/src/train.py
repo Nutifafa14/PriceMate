@@ -12,10 +12,12 @@ See ml/reports/MODEL_EVALUATION.md for the full methodology writeup.
 import json
 from pathlib import Path
 
+
+
 import joblib
 import pandas as pd
 from sklearn.ensemble import GradientBoostingRegressor, RandomForestRegressor
-from sklearn.linear_model import LinearRegression
+from sklearn.linear_model import LinearRegression, Ridge
 from sklearn.metrics import mean_absolute_error, mean_absolute_percentage_error, mean_squared_error, r2_score
 from sklearn.pipeline import Pipeline
 
@@ -112,6 +114,7 @@ def naive_baseline_predictions(train_df: pd.DataFrame, test_df: pd.DataFrame) ->
     )
 
 
+
 def main() -> None:
     df = engineer_features(load_wholesale_prices())
     train_df, test_df = chronological_split(df)
@@ -119,17 +122,24 @@ def main() -> None:
 
     X_train, y_train = train_df[FEATURE_COLUMNS], train_df[TARGET_COLUMN]
     X_test, y_test = test_df[FEATURE_COLUMNS], test_df[TARGET_COLUMN]
-
     results: dict[str, dict[str, float]] = {}
 
     naive_preds = naive_baseline_predictions(train_df, test_df)
     results["naive_group_mean"] = evaluate(y_test, naive_preds)
 
     candidates = {
-        "linear_regression": LinearRegression(),
-        "random_forest": RandomForestRegressor(n_estimators=100, random_state=RANDOM_STATE, n_jobs=-1),
-        "gradient_boosting": GradientBoostingRegressor(n_estimators=300, random_state=RANDOM_STATE),
-    }
+    "linear_regression": LinearRegression(),
+    "ridge": Ridge(alpha=10.0),
+    "random_forest": RandomForestRegressor(
+        n_estimators=100,
+        random_state=RANDOM_STATE,
+        n_jobs=-1
+    ),
+    "gradient_boosting": GradientBoostingRegressor(
+        n_estimators=300,
+        random_state=RANDOM_STATE
+    ),
+}
 
     fitted_pipelines: dict[str, Pipeline] = {}
     for name, estimator in candidates.items():

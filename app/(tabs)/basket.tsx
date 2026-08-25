@@ -60,6 +60,15 @@ export default function BasketScreen() {
       .slice(0, 6);
   }, [commoditiesQuery.data, query, items]);
 
+  // Once a result comes back, each priced item carries the honest unit its
+  // quantity was actually compared in ("kg" for weight-normalized
+  // commodities, else the raw unit — see basket-optimizer.ts). Before that
+  // first optimization, the unit isn't known yet, so the stepper just shows
+  // a bare count.
+  function unitLabelFor(commodityId: string): string | undefined {
+    return optimizeMutation.data?.items.find((i) => i.commodityId === commodityId)?.unitLabel;
+  }
+
   function addItem(commodityId: string, commodityName: string) {
     setItems((prev) => [...prev, { commodityId, commodityName, quantity: 1 }]);
     setQuery("");
@@ -144,40 +153,51 @@ export default function BasketScreen() {
           />
         ) : (
           <View style={{ gap: theme.spacing.sm }}>
-            {items.map((item) => (
-              <Card key={item.commodityId} style={{ flexDirection: "row", alignItems: "center", gap: theme.spacing.sm }}>
-                <ThemedText variant="body" weight="semibold" style={{ flex: 1 }}>
-                  {item.commodityName}
-                </ThemedText>
-                <Pressable
-                  onPress={() => updateQuantity(item.commodityId, -1)}
-                  accessibilityRole="button"
-                  accessibilityLabel={`Decrease ${item.commodityName} quantity`}
-                  style={{ padding: theme.spacing.xs }}
-                >
-                  <Ionicons name="remove-circle-outline" size={22} color={theme.colors.textMuted} />
-                </Pressable>
-                <ThemedText variant="body" weight="semibold" style={{ minWidth: 28, textAlign: "center" }}>
-                  {item.quantity}
-                </ThemedText>
-                <Pressable
-                  onPress={() => updateQuantity(item.commodityId, 1)}
-                  accessibilityRole="button"
-                  accessibilityLabel={`Increase ${item.commodityName} quantity`}
-                  style={{ padding: theme.spacing.xs }}
-                >
-                  <Ionicons name="add-circle-outline" size={22} color={theme.colors.accent} />
-                </Pressable>
-                <Pressable
-                  onPress={() => removeItem(item.commodityId)}
-                  accessibilityRole="button"
-                  accessibilityLabel={`Remove ${item.commodityName} from basket`}
-                  style={{ padding: theme.spacing.xs }}
-                >
-                  <Ionicons name="trash-outline" size={20} color={theme.colors.danger} />
-                </Pressable>
-              </Card>
-            ))}
+            {items.map((item) => {
+              const unitLabel = unitLabelFor(item.commodityId);
+              return (
+                <Card key={item.commodityId} style={{ flexDirection: "row", alignItems: "center", gap: theme.spacing.sm }}>
+                  <View style={{ flex: 1 }}>
+                    <ThemedText variant="body" weight="semibold">
+                      {item.commodityName}
+                    </ThemedText>
+                    {unitLabel ? (
+                      <ThemedText variant="label" color="muted">
+                        Priced per {unitLabel}
+                      </ThemedText>
+                    ) : null}
+                  </View>
+                  <Pressable
+                    onPress={() => updateQuantity(item.commodityId, -1)}
+                    accessibilityRole="button"
+                    accessibilityLabel={`Decrease ${item.commodityName} quantity`}
+                    style={{ padding: theme.spacing.xs }}
+                  >
+                    <Ionicons name="remove-circle-outline" size={22} color={theme.colors.textMuted} />
+                  </Pressable>
+                  <ThemedText variant="body" weight="semibold" style={{ minWidth: 44, textAlign: "center" }}>
+                    {item.quantity}
+                    {unitLabel ? ` ${unitLabel}` : ""}
+                  </ThemedText>
+                  <Pressable
+                    onPress={() => updateQuantity(item.commodityId, 1)}
+                    accessibilityRole="button"
+                    accessibilityLabel={`Increase ${item.commodityName} quantity`}
+                    style={{ padding: theme.spacing.xs }}
+                  >
+                    <Ionicons name="add-circle-outline" size={22} color={theme.colors.accent} />
+                  </Pressable>
+                  <Pressable
+                    onPress={() => removeItem(item.commodityId)}
+                    accessibilityRole="button"
+                    accessibilityLabel={`Remove ${item.commodityName} from basket`}
+                    style={{ padding: theme.spacing.xs }}
+                  >
+                    <Ionicons name="trash-outline" size={20} color={theme.colors.danger} />
+                  </Pressable>
+                </Card>
+              );
+            })}
 
             <Button
               label={optimizeMutation.isPending ? "Calculating…" : "Find cheapest way to buy this"}
@@ -185,6 +205,12 @@ export default function BasketScreen() {
               loading={optimizeMutation.isPending}
               disabled={items.length === 0}
             />
+            {items.length > 0 && !result ? (
+              <ThemedText variant="label" color="muted" style={{ textAlign: "center" }}>
+                Quantities are treated as kilograms for most items, or as the market&apos;s own unit (e.g. tubers,
+                bunches) for a few — the exact unit for each item shows up here once you calculate.
+              </ThemedText>
+            ) : null}
           </View>
         )}
 
@@ -215,6 +241,25 @@ export default function BasketScreen() {
               </Card>
             ) : null}
 
+            {result.items.some((i) => i.excludedMarkets.length > 0) ? (
+              <Card style={{ gap: theme.spacing.xs }}>
+                <ThemedText variant="label" weight="semibold" color="muted">
+                  Some markets couldn&apos;t be honestly compared
+                </ThemedText>
+                {result.items
+                  .filter((i) => i.excludedMarkets.length > 0)
+                  .map((i) => (
+                    <View key={i.commodityId} style={{ gap: 2 }}>
+                      {i.excludedMarkets.map((ex) => (
+                        <ThemedText key={ex.marketId} variant="label" color="muted">
+                          {i.commodityName} · {ex.marketName}: {ex.reason}
+                        </ThemedText>
+                      ))}
+                    </View>
+                  ))}
+              </Card>
+            ) : null}
+
             <SegmentedControl
               options={(["recommended", "combination", "singleMarket", "perItem"] as PlanKey[]).map((key) => ({
                 value: key,
@@ -234,17 +279,21 @@ export default function BasketScreen() {
                 </View>
 
                 <View style={{ gap: theme.spacing.xs }}>
-                  {activePlan.perItem.map((line) => (
-                    <View
-                      key={line.commodityId}
-                      style={{ flexDirection: "row", justifyContent: "space-between" }}
-                    >
-                      <ThemedText variant="label" color="muted" style={{ flex: 1 }}>
-                        {line.commodityName} · {line.marketName}
-                      </ThemedText>
-                      <ThemedText variant="label">GHS {line.lineCost.toFixed(2)}</ThemedText>
-                    </View>
-                  ))}
+                  {activePlan.perItem.map((line) => {
+                    const sourceItem = result.items.find((i) => i.commodityId === line.commodityId);
+                    return (
+                      <View
+                        key={line.commodityId}
+                        style={{ flexDirection: "row", justifyContent: "space-between" }}
+                      >
+                        <ThemedText variant="label" color="muted" style={{ flex: 1 }}>
+                          {line.commodityName}
+                          {sourceItem ? ` (${sourceItem.quantity} ${sourceItem.unitLabel})` : ""} · {line.marketName}
+                        </ThemedText>
+                        <ThemedText variant="label">GHS {line.lineCost.toFixed(2)}</ThemedText>
+                      </View>
+                    );
+                  })}
                 </View>
 
                 <View style={{ borderTopWidth: 1, borderTopColor: theme.colors.border, paddingTop: theme.spacing.sm, gap: 2 }}>
